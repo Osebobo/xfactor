@@ -1,6 +1,12 @@
 import React from 'react'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { GrUserManager } from "react-icons/gr";
+import { CgMediaLive } from "react-icons/cg";
+import { MdOutlineEventAvailable, MdEventSeat } from "react-icons/md";
+import { RiAdvertisementLine } from "react-icons/ri";
+import { SiManageiq } from "react-icons/si";
+
 import Slider from "react-slick";
 const settings = {
     dots: true,
@@ -42,7 +48,7 @@ export default function Services() {
             <Slider {...settings}>
                 <div class="service-item text-center">
                     <div class="services-icon">
-                        <i class="tf-mobile"></i>
+                        <i><MdEventSeat /></i>
                     </div>
                     <h4 class="service-title">Talent development</h4>
                     <p class="service-description">
@@ -52,7 +58,7 @@ export default function Services() {
                 </div>
                 <div class="service-item text-center">
                     <div class="services-icon">
-                        <i class="tf-mobile"></i>
+                        <i><SiManageiq/></i>
                     </div>
                     <h4 class="service-title">Artiste management</h4>
                     <p class="service-description">
@@ -61,7 +67,7 @@ export default function Services() {
                 </div>
                 <div class="service-item text-center">
                     <div class="services-icon">
-                        <i class="tf-mobile"></i>
+                        <i><MdOutlineEventAvailable /></i>
                     </div>
                     <h4 class="service-title">Event planning</h4>
                     <p class="service-description">
@@ -69,7 +75,7 @@ export default function Services() {
                 </div>
                 <div class="service-item text-center">
                     <div class="services-icon">
-                        <i class="tf-mobile"></i>
+                        <i><RiAdvertisementLine /></i>
                     </div>
                     <h4 class="service-title">Advertising</h4>
                     <p class="service-description">
@@ -77,7 +83,7 @@ export default function Services() {
                 </div>
                 <div class="service-item text-center">
                     <div class="services-icon">
-                        <i class="tf-mobile"></i>
+                        <i><CgMediaLive /></i>
                     </div>
                     <h4 class="service-title">Media consultancy</h4>
                     <p class="service-description">

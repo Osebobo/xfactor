@@ -1,10 +1,12 @@
 import { useMutation, useQuery } from "react-query";
 import {
+    getBanners,
     getEvent,
     getEvents,
     getGalleries,
     getTeams,
     getYoutubeVideos,
+    sendBooking,
     sendContact,
 } from "./api";
 
@@ -46,6 +48,19 @@ export const useYoutubeVideos = (id) => {
 export const useSendContact = () => {
     return useMutation("contactUs", async (param) => {
         const { data } = await sendContact(param);
+        return data;
+    });
+}
+
+export const useSendBooking = () => {
+    return useMutation("booking", async (param) => {
+        const { data } = await sendBooking(param);
+        return data;
+    });
+};
+export const useBanners = () => {
+    return useQuery("banners", async () => {
+        const { data } = await getBanners();
         return data;
     });
 };

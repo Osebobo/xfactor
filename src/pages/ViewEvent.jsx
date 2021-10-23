@@ -15,6 +15,14 @@ export default function ViewEvent(props) {
     const { id } = useParams()
     const { data, isError, isLoading, refetch  } = useEvent(id)
     useEffect(() => {
+        const unlisten = props.history.listen(() => {
+            window.scrollTo(0, 0);
+        });
+        return () => {
+            unlisten();
+        }
+    }, []);
+    useEffect(() => {
         setEventData([])
         refetch().then((res) =>  setEventData(res.data))
     }, [id])
@@ -66,7 +74,7 @@ export default function ViewEvent(props) {
                                 <div className="related-post widgets">
                                     <div className="list-group">
                                         <div className="list-group-item active text-center">
-                                            Related Post
+                                            Events
 				                    </div>
                                         {
                                             events?.map((event, key) => <Link to={"/event/" + event?.id} className="list-group-item">

@@ -1,59 +1,116 @@
-import { useState} from 'react'
-import { useSendContact } from '../component/hooks'
+import { useState, useEffect } from 'react'
+import { useSendBooking } from '../component/hooks'
+import image from "../assets/images/slider/slide-2.jpg"
+import axios from 'axios'
+export default function Booking({ history }) {
+    const [isLoading, setIsLoading] = useState(false)
+    const [isSuccess, setisSuccess] = useState(false)
+    const [message, setmessage] = useState(false)
+    const [validationError, setvalidationError] = useState(false)
+    const [requestError, setRequestError] = useState()
+    useEffect(() => {
+        const unlisten = history.listen(() => {
+            window.scrollTo(0, 0);
+        });
+        return () => {
+            unlisten();
+        }
+    }, []);
+    const normalizeContactForm7Response = (response) => {
+        // The other possible statuses are different kind of errors
+        const isSuccess = response.status === 'mail_sent';
+        // A message is provided for all statuses
+        const message = response.message;
+        const validationError = isSuccess
+            ? {}
+            : // We transform an array of objects into an object
+            Object.fromEntries(
+                response.invalid_fields.map((error) => {
+                    // Extracts the part after "cf7-form-control-wrap"
+                    const key = /cf7[-a-z]*.(.*)/.exec(error.into)[1];
 
-export default function Booking() {
-    const { mutate, isError, isLoading, } = useSendContact()
-    const [senderName, setName] = useState()
-    const [email, setEmail] = useState()
-    const [subject, setSubject] = useState()
-    const [body, setBody] = useState()
-    const onSend = () => {
-        mutate({
-            senderName,
-            email,
-            subject,
+                    return [key, error.message];
+                })
+            );
+
+        return {
+            isSuccess,
+            message,
+            validationError,
+        };
+    };
+    const formSubmissionHandler = (event) => {
+        event.preventDefault();
+        setIsLoading(true)
+        const formElement = event.target,
+            { action, method } = formElement,
+            body = new FormData(formElement);
+
+        fetch(action, {
+            method,
             body
         })
-    }
+            .then((response) => response.json())
+            .then((response) => {
+                setIsLoading(false)
+
+                const {
+                    isSuccess,
+                    message,
+                    validationError
+                } = normalizeContactForm7Response(response);
+                setisSuccess(isSuccess)
+                setmessage(message)
+                setvalidationError(validationError)
+            })
+            .catch((error) => {
+                setRequestError("An error occured")
+            });
+    };
+
     return (
         <>
-            <section className="page-header services-header" data-parallax="scroll" data-image-src="images/header/services-folding-img.jpg">
+            <section className="page-header services-header" data-parallax="scroll" data-parallax="scroll" style={{ backgroundImage: `url(${image})` }}>
                 <div className="container">
                     <div className="row">
                         <div className="col-md-12">
-                            <h1 className="text-center"> Book a Service </h1>
+                            <h1 className="text-center" style={{ color: '#fff' }}>  Book a Service </h1>
                         </div>
                     </div>
                 </div>
             </section>
             <section className="contact-form">
                 <div className="container">
-                    <div className="row">
-
+                    <div className="row"> 
                         <div className="title text-center col-md-6 col-xs-12">
                             <h2>How can we be of service</h2>
                         </div>
-                        <form className="" method="post" className="col-md-6 col-xs-12 align-content-center">
-                            <div className="text-center mx-auto">
+                        <div className="col-md-6 col-xs-12 align-content-center"> 
+                            {isSuccess && <p className="alert alert-success dismissible">{message}</p>}
+                            {/* {validationError && <p className="alert alert-danger dismissible">{validationError}</p>} */}
+                            <form onSubmit={formSubmissionHandler} className="text-center mx-auto"
+                                action="http://xfactorproductions.ng/backend/wp/wp-json/contact-form-7/v1/contact-forms/34/feedback"
+                                method="post">
                                 <div className="form-group">
-                                    <input type="email" className="form-control" placeholder="Email" />
+                                    <input id='email-address' name='email-address' type="email" className="form-control" placeholder="Email" />
                                 </div>
-                                <div className="form-group margin-0">
-                                    <input type="text" className="form-control" placeholder="Name" />
-                                </div>
-                                <div className="form-group">
-                                    <input type="date" className="form-control" placeholder="Date" />
+                                <div className="form-group ">
+                                    <input id='full-name' name='full-name' type="text" className="form-control" placeholder="Name" />
                                 </div>
                                 <div className="form-group">
-                                    <textarea className="form-control " rows="3" placeholder="More details"></textarea>
+                                    <input id='subject' name='subject' type="text" className="form-control" placeholder="Subject" />
                                 </div>
-                            </div>
-                            <div className="col-md-12">
-                                <div className="contact-btn text-center">
-                                    <input className="btn btn-default btn-main" type="submit" value={isLoading ? "Sending..." : "Sent Message"} />
+                                <div className="form-group">
+                                    <textarea id='body' name='body' className="form-control " rows="3" placeholder="Tell us what you'd what us to do"></textarea>
                                 </div>
-                            </div>
-                        </form>
+                                <div className="col-md-12">
+                                    <div className="contact-btn text-center">
+                                        <button type="submit" class="btn btn-default btn-main" >{isLoading ? 'Sending...' : 'Send Message'}</button>
+                                    </div>
+                                </div>
+                            </form>
+
+                        </div>
                     </div>
                 </div>
             </section>

@@ -21,7 +21,11 @@ import Contact from "./pages/Contact.jsx";
 import Team from "./component/Team.jsx";
 import Gallery from "./pages/Gallery.jsx";
 import Booking from "./pages/Booking.jsx";
+import logo from "./assets/images/logo-yellow.png"
+import whitelogo from "./assets/images/logow.png"
+import { useEffect } from "react"
 function Homepage() {
+
   return (
 
     <Router>
@@ -49,7 +53,7 @@ function Homepage() {
         </div>
       </div>
 
-      <nav className="navbar navbar-fixed-top navigation" >
+      <nav className="navbar navbar-fixed-top navigation"  >
         <div className="container">
           <div className="navbar-header">
             <button type="button" className="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -58,8 +62,9 @@ function Homepage() {
               <span className="icon-bar"></span>
               <span className="icon-bar"></span>
             </button>
-            <a className="navbar-brand logo" href="index.html">
-              <img src="images/logo-yellow.png" alt="" width="50%" />
+            <a className="navbar-brand logo" >
+              <img className="normal" src={logo} alt="" style={{ width: '80px' }} />
+              <img className="white" src={whitelogo} alt="" style={{ width: '80px' }} />
             </a>
           </div>
           <div className="collapse navbar-collapse navbar-ex1-collapse">
@@ -75,30 +80,14 @@ function Homepage() {
       </nav>
 
       <Switch>
-        <Route exact path="/">
-          <Home />
-        </Route>
-        <Route path="/about">
-          <About />
-        </Route>
-        <Route path="/events">
-          <Events />
-        </Route>
-        <Route path="/contact">
-          <Contact />
-        </Route> 
-        <Route path="/gallery">
-          <Gallery />
-        </Route>
-        <Route path="/team">
-          <Team />
-        </Route>
-        <Route path="/booking">
-          <Booking />
-        </Route>
-        <Route path="/event/:id">
-          <ViewEvent />
-        </Route>
+        <Route exact path="/" component={Home} />
+        <Route path="/about" component={About} />
+        <Route path="/events" component={Events} />
+        <Route path="/contact" component={Contact} />
+        <Route path="/gallery" component={Gallery} />
+        <Route path="/team" component={Team} />
+        <Route path="/booking" component={Booking} />
+        <Route path="/event/:id" component={ViewEvent} />
       </Switch>
 
       <footer className="footer">
@@ -123,7 +112,7 @@ function Homepage() {
                     <p>21, Mabo Street, Surulere Lagos, Nigeria.</p>
                     <p className="contact-address">
                       Contact us : <a href="tel:+2348012345678">+234 (8083641967, 803474855) | +447307955509 </a> <br />
-                      Write us : <a href="mailto:info@platinumjs.com">info@platinumjs.com
+                      Write us : <a href="mailto:info@xfactorproductions.ng">info@xfactorproductions.ng
                       </a>
                     </p>
                   </div>

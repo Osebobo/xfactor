@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const getEvents = () => {
     return new Promise((res, rej) => {
-        axios.get('https://api.platinumjs.com/wp/wp-json/wp/v2/event').then(response => {
+        axios.get('http://xfactorproductions.ng/backend/wp-json/wp/v2/event').then(response => {
             return res(response);
         }).catch(err => {
             return rej("An error occurred")
@@ -12,7 +12,7 @@ export const getEvents = () => {
 
 export const getEvent = (id) => {
     return new Promise((res, rej) => {
-        axios.get(`https://api.platinumjs.com/wp/wp-json/wp/v2/event/${id}`).then(response => {
+        axios.get(`http://xfactorproductions.ng/backend/wp-json/wp/v2/event/${id}`).then(response => {
             return res(response);
         }).catch(err => {
             return rej("An error occurred")
@@ -22,7 +22,7 @@ export const getEvent = (id) => {
 
 export const getTeams = () => {
     return new Promise((res, rej) => {
-        axios.get(`http://api.platinumjs.com/wp/wp-json/wp/v2/teams`).then(response => {
+        axios.get(`http://xfactorproductions.ng/backend/wp-json/wp/v2/teams`).then(response => {
             return res(response);
         }).catch(err => {
             return rej("An error occurred")
@@ -32,7 +32,25 @@ export const getTeams = () => {
 
 export const getGalleries = () => {
     return new Promise((res, rej) => {
-        axios.get(`https://api.platinumjs.com/wp/wp-json/wp/v2/gallery`).then(response => {
+        axios.get(`http://xfactorproductions.ng/backend/wp-json/wp/v2/gallery`).then(response => {
+            return res(response);
+        }).catch(err => {
+            return rej("An error occurred")
+        })
+    })
+}
+ 
+export const sendContact = (data) => {
+    // const formData = new FormData();
+    const config = {
+        headers: {
+            'content-type': 'multipart/form-data'
+        }
+    }
+    return new Promise((res, rej) => {
+        axios.post("http://xfactorproductions.ng/backend/wp-json/contact-form-7/v1/contact-forms/33/feedback", {
+            ...data
+        }, config ).then(response => {
             return res(response);
         }).catch(err => {
             return rej("An error occurred")
@@ -40,12 +58,17 @@ export const getGalleries = () => {
     })
 }
 
-
-export const sendContact = (data) => {
+export const sendBooking = (data) => {
+    // const formData = new FormData();
+    const config = {
+        headers: {
+            'content-type': 'multipart/form-data'
+        }
+    }
     return new Promise((res, rej) => {
-        axios.post("http://api.platinumjs.com/wp/wp-json/contact-form-7/v1/contact-forms/32/feedback", {
+        axios.post("http://xfactorproductions.ng/backend/wp-json/contact-form-7/v1/contact-forms/33/feedback", {
             ...data
-        }).then(response => {
+        }, config ).then(response => {
             return res(response);
         }).catch(err => {
             return rej("An error occurred")
@@ -56,6 +79,17 @@ export const sendContact = (data) => {
 export const getYoutubeVideos = (data) => {
     return new Promise((res, rej) => {
         axios.get("https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=UCmMylJooYnZJVztgbDxsznA&key=AIzaSyAWa6OqGAF6FfREjPCaeijNTQxQWsoLecA")
+            .then(response => {
+                return res(response);
+            }).catch(err => {
+                return rej("An error occurred")
+            })
+    })
+}
+
+export const getBanners = () => {
+    return new Promise((res, rej) => {
+        axios.get("http://xfactorproductions.ng/backend/wp-json/wp/v2/banner")
             .then(response => {
                 return res(response);
             }).catch(err => {

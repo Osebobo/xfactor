@@ -1,63 +1,115 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useSendContact } from '../component/hooks'
+import image from "../assets/images/slider/slide-2.jpg"
+export default function Contact({ history }) {
+    const [isLoading, setIsLoading] = useState(false)
+    const [isSuccess, setisSuccess] = useState(false)
+    const [message, setmessage] = useState(false)
+    const [validationError, setvalidationError] = useState(false)
+    const [requestError, setRequestError] = useState()
+    useEffect(() => {
+        const unlisten = history.listen(() => {
+            window.scrollTo(0, 0);
+        });
+        return () => {
+            unlisten();
+        }
+    }, []);
+    const normalizeContactForm7Response = (response) => {
+        // The other possible statuses are different kind of errors
+        const isSuccess = response.status === 'mail_sent';
+        // A message is provided for all statuses
+        const message = response.message;
+        const validationError = isSuccess
+            ? {}
+            : // We transform an array of objects into an object
+            Object.fromEntries(
+                response.invalid_fields.map((error) => {
+                    // Extracts the part after "cf7-form-control-wrap"
+                    const key = /cf7[-a-z]*.(.*)/.exec(error.into)[1];
 
-export default function Contact() {
-    const { mutate, isError, isLoading, isSuccess } = useSendContact()
-    const [senderName, setName] = useState()
-    const [email, setEmail] = useState()
-    const [subject, setSubject] = useState()
-    const [body, setBody] = useState()
-    const onSend = () => {
-        mutate({
-            senderName,
-            yourEmail: email,
-            subject,
+                    return [key, error.message];
+                })
+            );
+
+        return {
+            isSuccess,
+            message,
+            validationError,
+        };
+    };
+    const formSubmissionHandler = (event) => {
+        event.preventDefault();
+        setIsLoading(true)
+        const formElement = event.target,
+            { action, method } = formElement,
+            body = new FormData(formElement);
+
+        fetch(action, {
+            method,
             body
         })
-    }
+            .then((response) => response.json())
+            .then((response) => {
+                setIsLoading(false)
+
+                const {
+                    isSuccess,
+                    message,
+                    validationError
+                } = normalizeContactForm7Response(response);
+                setisSuccess(isSuccess)
+                setmessage(message)
+                setvalidationError(validationError)
+            })
+            .catch((error) => {
+                setRequestError("An error occured")
+            });
+    };
     return (
         <>
-            <section className="page-header services-header" data-parallax="scroll" data-image-src="images/header/services-folding-img.jpg">
+            <section className="page-header services-header" data-parallax="scroll" data-parallax="scroll" style={{ backgroundImage: `url(${image})` }}>
                 <div className="container">
                     <div className="row">
                         <div className="col-md-12">
-                            <h1 className="text-center"> Contact Us </h1>
+                            <h1 className="text-center" style={{ color: '#fff' }}>  Contact Us </h1>
                         </div>
                     </div>
                 </div>
             </section>
-            <section class="contact-form">
-                <div class="container">
+            <section className="contact-form">
+                <div className="container">
 
-                    <div class="row">
-                       
-                        {isSuccess && <p className="alert  text-center alert-success">Mail Sent</p>}
-                        {isError && <p className="alert  text-center alert-danger">An Error Occurred</p>}
+                    <form onSubmit={formSubmissionHandler} className="text-center mx-auto"
+                        action="http://xfactorproductions.ng/backend/wp-json/contact-form-7/v1/contact-forms/33/feedback"
+                        method="post" className="row">
+                        {isSuccess && <p className="alert alert-success dismissible">{message}</p>}
                         <>
-                            <div class="col-md-6">
+                            <div className="col-md-6">
 
-                                <div class="form-group">
-                                    <input type="text" class="form-control" onChange={e => setSubject(e.target.value)} placeholder="Subject" />
+                                <div className="form-group">
+                                    <input name="subject" type="text" className="form-control" placeholder="Subject" />
                                 </div>
-                                <div class="form-group">
-                                    <input type="email" class="form-control" onChange={e => setEmail(e.target.value)} placeholder="Email" />
+                                <div className="form-group">
+                                    <input name="email" type="email" className="form-control" placeholder="Email" />
                                 </div>
-                                <div class="form-group margin-0">
-                                    <input type="text" class="form-control" onChange={e => setName(e.target.value)} placeholder="Name" />
+                                <div className="form-group margin-0">
+                                    <input name='full-name' type="text" className="form-control"  placeholder="Name" />
+                                </div>
+                                <div className="form-group">
+                                    <textarea name="your-message" className="form-control " rows="3" placeholder="Message"></textarea>
+                                </div>
+                                <div className="contact-btn text-center">
+                                    <button className="btn btn-/default btn-main" type="submit" >{isLoading ? 'Sending...' : 'Sent Message'}</button>
                                 </div>
                             </div>
-                            <div class="col-md-6 margin-0">
-                                <div class="form-group">
-                                    <textarea class="form-control " onChange={e => setBody(e.target.value)} rows="3" placeholder="Message"></textarea>
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="contact-btn text-center">
-                                    <button class="btn btn-/default btn-main" onClick={onSend} >{isLoading ? 'Sending...' : 'Sent Message'}</button>
+                            <div className="col-md-6 margin-4">
+                                <div className="title text-center col-md-6 col-xs-12">
+                                    <h2>We will love to hear from you!</h2>
                                 </div>
                             </div>
                         </>
-                    </div>
+                    </form>
                 </div>
             </section>
         </>

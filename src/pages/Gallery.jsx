@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useGalleries, useYoutubeVideos } from '../component/hooks'
 import ReactLoading from 'react-loading';
-
+import image from "../assets/images/slider/slide-2.jpg"
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
@@ -39,10 +39,18 @@ const settings = {
         }
     ]
 };
-export default function Gallery() {
+export default function Gallery({ history}) {
     const gallery = useGalleries().data
     const galleryLoading = useGalleries().isLoading
     const [galleryArr, setGallery] = useState([])
+    useEffect(() => {
+        const unlisten = history.listen(() => {
+            window.scrollTo(0, 0);
+        });
+        return () => {
+            unlisten();
+        }
+    }, []);
     useEffect(() => {
         console.log('gallery', gallery);
         let m = []
@@ -58,11 +66,11 @@ export default function Gallery() {
     return (
         <>
 
-            <section className="page-header services-header" data-parallax="scroll" data-image-src="images/header/services-folding-img.jpg">
+            <section className="page-header services-header" data-parallax="scroll" data-parallax="scroll" style={{ backgroundImage: `url(${image})`}}>
                 <div className="container">
                     <div className="row">
                         <div className="col-md-12">
-                            <h1 className="text-center"> Our Gallery </h1>
+                            <h1 className="text-center" style={{ color: '#fff' }}> Our Gallery </h1>
                         </div>
                     </div>
                 </div>
@@ -74,8 +82,10 @@ export default function Gallery() {
                     </div>
                     <div className="row">
                         <div className="col-md-12">
-                            {galleryLoading ? <div className="mx-auto">
-                                <ReactLoading type="cylon" color={'#facd8a'} height={500} width={200} />
+                            {galleryLoading ?
+                             <div style={{marginLeft: '35vw'}} className="mx-auto">
+                             <p className="text-center text-dark">Getting Images...</p>
+                                <ReactLoading type="cubes" color={'#b31b1b'} height={500} width={200} />
                             </div> :
                                 <>
                                     <div id="Container">
@@ -124,8 +134,8 @@ const YoutubeMedia = () => {
     const loading = useYoutubeVideos().isLoading
     return (
         <div className="col-md-12">
-            {loading ? <div className="mx-auto">
-                <ReactLoading type="cylon" color={'#facd8a'} height={500} width={200} />
+            {loading ? <div className="w-100 mx-auto">
+                <ReactLoading type="cubes" color={'#b31b1b'} height={500} width={200} />
             </div> :
                 <>
                     <div id="Container">
@@ -143,7 +153,7 @@ const YoutubeMedia = () => {
                                                     </div>
                                                 </div>
                                             </div>
-                                            <p style={{ color: '#fff' }}>{im.snippet?.description}</p>
+                                            {/* <p style={{ color: '#fff' }}>{im.snippet?.description}</p> */}
                                         </a>
                                     </div>
                                 )

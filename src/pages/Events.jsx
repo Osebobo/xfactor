@@ -2,11 +2,20 @@ import React, { useState, useEffect } from 'react'
 import EventCard from '../component/EventCard'
 import { useEvents } from '../component/hooks'
 import ReactLoading from 'react-loading';
+import { Helmet } from 'react-helmet';
 
-export default function Events() {
+export default function Events({ history}) {
     const [eventList, setEventList] = useState([])
     const event = useEvents().data
     const eventLoading = useEvents().isLoading
+    useEffect(() => {
+        const unlisten = history.listen(() => {
+            window.scrollTo(0, 0);
+        });
+        return () => {
+            unlisten();
+        }
+    }, []);
     useEffect(() => {
         let eventArray = []
         event?.length > 0 && event.map((e, i) => eventArray.push({
@@ -22,11 +31,14 @@ export default function Events() {
     }, [event])
     return (
         <>
-            <section className="page-header services-header" data-parallax="scroll" data-image-src="images/header/services-folding-img.jpg">
+        <Helmet>
+                {event?.yoast_head}
+        </Helmet>
+            <section className="page-header services-header" data-parallax="scroll" data-image-src="images/slider/slide-3.jpg">
                 <div className="container">
                     <div className="row">
                         <div className="col-md-12">
-                            <h1 className="text-center"> Our Events </h1>
+                            <h1 className="text-center" style={{ color: '#fff' }}>  Our Events </h1>
                         </div>
                     </div>
                 </div>
