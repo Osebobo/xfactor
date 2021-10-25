@@ -1095,7 +1095,7 @@
         height: 100%;
         padding: 75px 23px;
         opacity: 0;
-        background: rgba(231, 190, 130, 0.9);
+        background: #e247283b; 
         -webkit-transition: 0.4s;
         transition: 0.4s;
     }

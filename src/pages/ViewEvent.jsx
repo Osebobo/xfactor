@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router'
-import { useEvent, useEvents } from '../component/hooks'
-import ReactPlaceholder from 'react-placeholder';
-import "react-placeholder/lib/reactPlaceholder.css";
+import { useEvent, useEvents } from '../component/hooks' 
 import ReactLoading from 'react-loading';
 import Moment from 'react-moment';
 import ReactHtmlParser from 'react-html-parser';

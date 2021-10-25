@@ -9,11 +9,14 @@ import "animate.css/animate.min.css";
 import { useBanners, useEvents } from '../component/hooks';
 import { Helmet } from "react-helmet";
 import Fade from 'react-reveal/Fade';
-import "react-placeholder/lib/reactPlaceholder.css";
 import EventCard from '../component/EventCard';
 import ReactLoading from 'react-loading';
 import ScrollAnimation from 'react-animate-on-scroll';
 import abountimage from "../assets/images/Street Dancer Image.jpeg"
+import ContentLoader from "react-content-loader"
+import axios from 'axios';
+import ReactHtmlParser from 'react-html-parser';
+
 const settings = {
     dots: true,
     infinite: true,
@@ -29,14 +32,27 @@ export default function Index({ history }) {
     const eventLoading = useEvents().isLoading
     const banners = useBanners().data
     const bannersLoading = useBanners().isLoading
+    const [videoPost, setVideoPost] = useState([])
     const bannersError = useBanners().error
     useEffect(() => {
         const unlisten = history.listen(() => {
             window.scrollTo(0, 0);
         });
+        axios.get("http://api.xfactorproductions.ng/wp-json/wp/v2/video-post")
+            .then(res => {
+                let ep = [];
+                res.data?.map(d => ep.push({
+                    link: d?.acf?.youtube_link,
+                    title: d?.title?.rendered,
+                    content: d?.content?.rendered?.length > 400 ? d?.content?.rendered?.substring(0, 400) : d?.content?.rendered,
+                }))
+                setVideoPost(ep)
+            })
         return () => {
             unlisten();
         }
+
+
     }, []);
     useEffect(() => {
         let eventArray = []
@@ -58,23 +74,34 @@ export default function Index({ history }) {
                 <title>X Factor Productions</title>
                 <link rel="canonical" href="http://xfactorproductions.ng/" />
             </Helmet>
-            <header>
-                <Slider {...settings}>
-                    {
-                        banners?.map((banner, index) => <div key={index} className="hero-area th-fullpage" data-parallax="scroll" >
-                            <div className="container-fluid" style={{ height: '100vh', alignItems: 'center', alignContent: 'center', backgroundImage: `url(${banner?.better_featured_image?.source_url})` }}>
-                                <div className="row">
-                                    <div className="col-md-12 text-center" style={{ marginTop: '40vh' }}>
-                                        <h1>{banner?.title?.rendered}</h1>
-                                        <Link className="btn btn-default btn-main" to="/about" role="button">Know More</Link>
+            <header style={{ backgroundColor: '#ffff' }}>
+                {bannersLoading ? <> <ContentLoader
+                    speed={2}
+                    width={"100vw"}
+                    height={"100vh"}
+                    viewBox="0 0 400 460"
+                    backgroundColor="#f3f3f3"
+                    foregroundColor="#ecebeb"
+                >
+                    <rect x="0" y="100" rx="2" ry="2" width="100vh" height="100vh" />
+                </ContentLoader> </> :
+                    <>
+                        <Slider {...settings}>
+                            {
+                                banners?.map((banner, index) => <div key={index} className="hero-area th-fullpage" data-parallax="scroll" >
+                                    <div className="container-fluid" style={{ height: '100vh', alignItems: 'center', alignContent: 'center', backgroundImage: `url(${banner?.better_featured_image?.source_url})` }}>
+                                        <div className="row">
+                                            <div className="col-md-12 text-center" style={{ marginTop: '40vh' }}>
+                                                <h1>{banner?.title?.rendered}</h1>
+                                                {banner?.title && <Link className="btn btn-default btn-main" to="/about" role="button">Know More</Link>}
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        )
-                    }
+                                )
+                            }
 
-                </Slider>
+                        </Slider> </>}
             </header>
 
             <section className="case-study">
@@ -105,14 +132,14 @@ export default function Index({ history }) {
                     </div>
                 </div>
             </section>
-            <div className="case-study-content">
+            <div className="case-study-content" style={{ backgroundColor: '#e24728' }}>
                 <div className="section">
                     <div className="container-fluid">
                         <Fade left>
                             <div className="row">
                                 <div className="col-md-12">
                                     <div className="title text-center">
-                                        <h2>Our Services</h2>
+                                        <h2 style={{ color: '#fff' }}>Our Services</h2>
                                     </div>
                                     <div className="container">
                                         <div className="row">
@@ -125,7 +152,7 @@ export default function Index({ history }) {
                     </div>
                 </div>
             </div>
-            <section className="team">
+            {  eventList.length > 1 && <section className="team">
                 <div className="container-fluid padding-0">
                     <Fade bottom>
                         <div className="title text-center">
@@ -134,7 +161,7 @@ export default function Index({ history }) {
                         {
                             eventLoading ? <ReactLoading type="bar" color={'#facd8a'} height={500} width={200} /> : <>
                                 {
-                                    eventList.length > 1 &&
+
                                     <div className="container">
                                         <div className="row">
                                             <div className="col-xs-12 col-md-12 col-lg-7">
@@ -176,33 +203,32 @@ export default function Index({ history }) {
                     </Fade>
                 </div>
             </section>
-
-
-            {/* <section className="clients" data-parallax="scroll" data-image-src="images/slider/rema-1536x672.jpg">
-                <div className="container">
-                    <div className="row">
-                        <div className="col-md-6 col-xs-12">
-                            <div className="img-content">
-                                <iframe width="100%" height="315" src="https://www.youtube.com/embed/-frvXtNweXU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            }
+            {videoPost.length &&
+                <section style={{ backgroundColor: '#fff' }}
+                    className="clients" data-parallax="scroll" data-image-src="images/slider/rema-1536x672.jpg">
+                    <div className="container">
+                        <div className="row">
+                            <div className=" col-xs-12">
+                                <div className="img-content">
+                                    <iframe width="100%" height="500" src={'https://www.youtube.com/embed/S9DLTyMuP64'} title={videoPost[0]?.title}
+                                        frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                </div>
                             </div>
-                        </div>
-                        <div className="col-md-6 col-xs-12">
+                            <div className="col-xs-12">
 
-                            <div className="content">
-                                <h4 className="inner-title">We are your perfect PR executive!</h4>
-                                <p className="case-description">Lets make your dream a reality</p>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex unde soluta, nesciunt consequuntur accusamus sint! Eaque quod consectetur laborum quae repudiandae illum hic explicabo sunt perferendis. Voluptas, fugiat eos sed!
-                                  </p>
+                                <div className="content">
+                                <h2 className="inner-title" style={{ fontSize: '16px', color: '#e24728' }}>{videoPost[0]?.title}</h2>
+                                {/* <div> {ReactHtmlParser(videoPost[0]?.content)}</div> */}
 
-                                <a className="btn btn-default btn-main" href="#" role="button">See Our Videos</a>
+                                    <Link className="btn btn-default btn-main" to="/gallery" role="button">See Our Videos</Link>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-            </section> */}
-
+                </section>
+            }
 
 
         </>
