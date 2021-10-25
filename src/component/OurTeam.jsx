@@ -47,7 +47,7 @@ export default function OurTeam(props) {
         props.team?.map && props.team?.map(t => tm.push({
             image: t.better_featured_image?.source_url,
             position: t.acf?.position,
-            except: t.excerpt.rendered,
+            except: t.excerpt?.rendered,
             name: t.title?.rendered,
             all: t.content.rendered
         }))

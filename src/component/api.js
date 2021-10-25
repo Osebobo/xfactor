@@ -1,8 +1,10 @@
 import axios from "axios";
 
+const BASE_URL = "http://api.xfactorproductions.ng"
+
 export const getEvents = () => {
     return new Promise((res, rej) => {
-        axios.get('http://xfactorproductions.ng/backend/wp-json/wp/v2/event').then(response => {
+          axios.get(`${BASE_URL}/wp-json/wp/v2/event`).then(response => {
             return res(response);
         }).catch(err => {
             return rej("An error occurred")
@@ -12,7 +14,7 @@ export const getEvents = () => {
 
 export const getEvent = (id) => {
     return new Promise((res, rej) => {
-        axios.get(`http://xfactorproductions.ng/backend/wp-json/wp/v2/event/${id}`).then(response => {
+          axios.get(`${BASE_URL}/wp-json/wp/v2/event/${id}`).then(response => {
             return res(response);
         }).catch(err => {
             return rej("An error occurred")
@@ -22,7 +24,7 @@ export const getEvent = (id) => {
 
 export const getTeams = () => {
     return new Promise((res, rej) => {
-        axios.get(`http://xfactorproductions.ng/backend/wp-json/wp/v2/teams`).then(response => {
+        axios.get(`${BASE_URL}/wp-json/wp/v2/team`).then(response => {
             return res(response);
         }).catch(err => {
             return rej("An error occurred")
@@ -32,7 +34,7 @@ export const getTeams = () => {
 
 export const getGalleries = () => {
     return new Promise((res, rej) => {
-        axios.get(`http://xfactorproductions.ng/backend/wp-json/wp/v2/gallery`).then(response => {
+        axios.get(`${BASE_URL}/wp-json/wp/v2/gallery`).then(response => {
             return res(response);
         }).catch(err => {
             return rej("An error occurred")
@@ -48,7 +50,7 @@ export const sendContact = (data) => {
         }
     }
     return new Promise((res, rej) => {
-        axios.post("http://xfactorproductions.ng/backend/wp-json/contact-form-7/v1/contact-forms/33/feedback", {
+        axios.get(`${BASE_URL}/wp-json/contact-form-7/v1/contact-forms/70/feedback`, {
             ...data
         }, config ).then(response => {
             return res(response);
@@ -66,7 +68,7 @@ export const sendBooking = (data) => {
         }
     }
     return new Promise((res, rej) => {
-        axios.post("http://xfactorproductions.ng/backend/wp-json/contact-form-7/v1/contact-forms/33/feedback", {
+        axios.get(`${BASE_URL}/wp-json/contact-form-7/v1/contact-forms/69/feedback`, {
             ...data
         }, config ).then(response => {
             return res(response);
@@ -89,7 +91,7 @@ export const getYoutubeVideos = (data) => {
 
 export const getBanners = () => {
     return new Promise((res, rej) => {
-        axios.get("http://xfactorproductions.ng/backend/wp-json/wp/v2/banner")
+        axios.get(`${BASE_URL}/wp-json/wp/v2/banners`)
             .then(response => {
                 return res(response);
             }).catch(err => {

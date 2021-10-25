@@ -52,7 +52,7 @@ export default function Services() {
                     </div>
                     <h4 class="service-title">Talent development</h4>
                     <p class="service-description">
-                        Platinum J's World Entertainment works to develop and refine your talent.
+                        X-Factor Productions works to develop and refine your talent.
                         We champion designing effective and strategic initiatives that set you apart from the masses and up for success.
                     </p>
                 </div>

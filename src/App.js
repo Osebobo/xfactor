@@ -100,7 +100,7 @@ function Homepage() {
 
                   <div className="footer-about">
                     <h3 className="footer-title">About</h3>
-                    <p>Platinum J's World is a boutique entertainment company specializing in talent development,
+                    <p>X Factor Productions's World is a boutique entertainment company specializing in talent development,
                      artistes management, event planning, advertising and media consultancy.</p>
                   </div>
                 </div>
@@ -132,7 +132,7 @@ function Homepage() {
               <div className="text-center">
                 <div className="col-md-12">
                   <div className="copyright">
-                    <p>  Copyright &copy; 2021 Platinum J Entertainment Company. All Rights Reserved </p>
+                    <p>  Copyright &copy; 2021 X Factor Productions Entertainment Company. All Rights Reserved </p>
                   </div>
                 </div>
               </div>
