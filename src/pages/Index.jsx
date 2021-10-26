@@ -38,7 +38,7 @@ export default function Index({ history }) {
         const unlisten = history.listen(() => {
             window.scrollTo(0, 0);
         });
-        axios.get("http://api.xfactorproductions.ng/wp-json/wp/v2/video-post")
+        axios.get("https://api.xfactorproductions.ng/wp-json/wp/v2/video-post")
             .then(res => {
                 let ep = [];
                 res.data?.map(d => ep.push({
@@ -152,10 +152,10 @@ export default function Index({ history }) {
                     </div>
                 </div>
             </div>
-            {  eventList.length > 1 && <section className="team">
+            {  eventList.length > 0 && <section className="team">
                 <div className="container-fluid padding-0">
                     <Fade bottom>
-                        <div className="title text-center">
+                        <div className="title text-center mb-4">
                             <h2>Live Feeds</h2>
                         </div>
                         {
@@ -169,19 +169,19 @@ export default function Index({ history }) {
                                             </div>
                                             <div className="col-lg-1"></div>
                                             <div className="col-xs-12 col-md-12 col-lg-4">
-                                                <div className="blog-sidbar">
-                                                    <div className="related-post widgets">
+                                                <div className="blog-sidbar" >
+                                                    <div className="related-post widgets" style={{ backgroundColor: '#fff' }}>
                                                         <div className="list-group">
-                                                            <div className="list-group-item active text-center">
+                                                            <div className="list-group-item active text-center" style={{ color: '#fff' }}>
                                                                 Previous Feeds And Events
-				                        </div>
+				                                                </div>
                                                             {
                                                                 eventList.map((event, key) =>
-                                                                    <Link to={"/event/" + event?.id} className="list-group-item">
-                                                                        <div className="media">
-                                                                            <div className="media-left media-middle"><p className="post-count">{key + 1}</p></div>
+                                                                    <Link to={"/event/" + event?.id} className="list-group-item" style={{ backgroundColor: '#fff' }}>
+                                                                        <div className="media" style={{ borderBottom: '1px solid #e24728' }}>
+                                                                            <div className="media-left media-middle"><p className="post-count" style={{ backgroundColor: '#e24728' }}>{key + 1}</p></div>
                                                                             <div className="media-body">
-                                                                                <p>{event.title}</p>
+                                                                                <p style={{ color: '#e24728' }}>{event.title}</p>
                                                                             </div>
                                                                         </div>
                                                                     </Link>)
@@ -218,8 +218,8 @@ export default function Index({ history }) {
                             <div className="col-xs-12">
 
                                 <div className="content">
-                                <h2 className="inner-title" style={{ fontSize: '16px', color: '#e24728' }}>{videoPost[0]?.title}</h2>
-                                {/* <div> {ReactHtmlParser(videoPost[0]?.content)}</div> */}
+                                    <h2 className="inner-title" style={{ fontSize: '16px', color: '#e24728' }}>{videoPost[0]?.title}</h2>
+                                    {/* <div> {ReactHtmlParser(videoPost[0]?.content)}</div> */}
 
                                     <Link className="btn btn-default btn-main" to="/gallery" role="button">See Our Videos</Link>
                                 </div>

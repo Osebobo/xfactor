@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "http://api.xfactorproductions.ng"
+const BASE_URL = "https://api.xfactorproductions.ng"
 
 export const getEvents = () => {
     return new Promise((res, rej) => {
@@ -11,6 +11,7 @@ export const getEvents = () => {
         })
     })
 }
+
 
 export const getEvent = (id) => {
     return new Promise((res, rej) => {

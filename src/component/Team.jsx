@@ -18,7 +18,7 @@ export default function Team({ history }) {
         let tm = []
         data?.map(t => tm.push({
             image: t.better_featured_image?.source_url,
-            position: t.acf?.position,
+            position: t.acf?.role,
             except: t.excerpt?.rendered,
             name: t.title?.rendered,
             all: t.content.rendered
