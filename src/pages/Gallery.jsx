@@ -39,7 +39,7 @@ const settings = {
         }
     ]
 };
-export default function Gallery({ history}) {
+export default function Gallery({ history }) {
     const gallery = useGalleries().data
     const galleryLoading = useGalleries().isLoading
     const [galleryArr, setGallery] = useState([])
@@ -66,16 +66,16 @@ export default function Gallery({ history}) {
     return (
         <>
 
-            <section className="page-header services-header" data-parallax="scroll" data-parallax="scroll" style={{ backgroundImage: `url(${image})`}}>
+            <section className="page-header services-header" data-parallax="scroll" data-parallax="scroll" style={{ backgroundImage: `url(${image})` }}>
                 <div className="container">
                     <div className="row">
                         <div className="col-md-12">
-                            <h1 className="text-center" style={{ color: '#fff' }}> Our Gallery </h1>
+                            <h1 className="text-center" style={{ color: '#fff' }}> Gallery </h1>
                         </div>
                     </div>
                 </div>
             </section>
-            <section className="portfolio">
+            {/* <section className="portfolio">
                 <div className="container">
                     <div class="title text-center">
                         <h2>Our Images</h2>
@@ -83,10 +83,10 @@ export default function Gallery({ history}) {
                     <div className="row">
                         <div className="col-md-12">
                             {galleryLoading ?
-                             <div style={{marginLeft: '35vw'}} className="mx-auto">
-                             <p className="text-center text-dark">Getting Images...</p>
-                                <ReactLoading type="cubes" color={'#b31b1b'} height={500} width={200} />
-                            </div> :
+                                <div style={{ marginLeft: '35vw' }} className="mx-auto">
+                                    <p className="text-center text-dark">Getting Images...</p>
+                                    <ReactLoading type="cubes" color={'#b31b1b'} height={500} width={200} />
+                                </div> :
                                 <>
                                     <div id="Container">
                                         {
@@ -98,7 +98,7 @@ export default function Gallery({ history}) {
                                                                 <img src={im.image} alt="Portfolio" />
                                                                 <div className="caption portfolio-caption">
                                                                     <h3 className="portfolio-title">{im.title}</h3>
-                                                                    {/* <p className="portfolio-subtitle">Branding</p> */}
+                                                                    <p className="portfolio-subtitle">Branding</p>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -114,13 +114,13 @@ export default function Gallery({ history}) {
 
                     </div>
                 </div>
-            </section>
+            </section> */}
 
             <section className="portfolio">
                 <div className="container">
-                    <div class="title text-center">
+                    {/* <div class="title text-center">
                         <h2>Our Videos</h2>
-                    </div>
+                    </div> */}
                     <YoutubeMedia />
                 </div>
             </section>
@@ -134,31 +134,31 @@ const YoutubeMedia = () => {
     const loading = useYoutubeVideos().isLoading
     return (
         <div className="col-md-12">
-            {loading ? <div className="w-100 mx-auto">
-                <ReactLoading type="cubes" color={'#b31b1b'} height={500} width={200} />
+            {loading ? <div className="w-100 ml-4 mx-auto">
+                <ReactLoading type="cubes" color={'#e24728'} height={200} width={400} />
             </div> :
                 <>
-                    <div id="Container">
-                        <Slider {...settings}>
-                            {
-                                videos?.map((im, i) =>
-                                    <div className="portfolio-list">
-                                        <a href={`https://www.youtube.com/embed/${im.id?.videoId}`}>
-                                            <div className="th-mouse-portfolio-card" style={{ margin: 10 }}>
-                                                <div className="thumbnail portfolio-thumbnail">
-                                                    <iframe width="100%" height="315" src={`https://www.youtube.com/embed/${im.id?.videoId}`} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                                    <div className="caption portfolio-caption">
-                                                        <h3 className="portfolio-title">{im.snippet?.title}</h3>
-                                                        {/* <p className="portfolio-subtitle">Branding</p> */}
-                                                    </div>
+                    <div id="Container row">
+
+                        {
+                            videos?.map((im, i) =>
+                                <div className="portfolio-list col-xs-12 col-md-4">
+                                    <a href={`https://www.youtube.com/embed/${im.id?.videoId}`}>
+                                        <div className="th-mouse-portfolio-card" style={{ margin: 10 }}>
+                                            <div className="thumbnail portfolio-thumbnail">
+                                                <iframe width="100%" height="315" src={`https://www.youtube.com/embed/${im.id?.videoId}`} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                                <div className="caption portfolio-caption">
+                                                    <h3 className="portfolio-title">{im.snippet?.title}</h3>
+                                                    {/* <p className="portfolio-subtitle">Branding</p> */}
                                                 </div>
                                             </div>
-                                            {/* <p style={{ color: '#fff' }}>{im.snippet?.description}</p> */}
-                                        </a>
-                                    </div>
-                                )
-                            }
-                        </Slider>
+                                        </div>
+                                        {/* <p style={{ color: '#fff' }}>{im.snippet?.description}</p> */}
+                                    </a>
+                                </div>
+                            )
+                        }
+
 
                     </div>
                 </>

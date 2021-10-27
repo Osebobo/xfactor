@@ -78,18 +78,18 @@ function Homepage() {
           </div>
         </div>
       </nav>
-
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route path="/about" component={About} />
-        <Route path="/events" component={Events} />
-        <Route path="/contact" component={Contact} />
-        <Route path="/gallery" component={Gallery} />
-        <Route path="/team" component={Team} />
-        <Route path="/booking" component={Booking} />
-        <Route path="/event/:id" component={ViewEvent} />
-      </Switch>
-
+      <div style={{ overflowX: 'hidden' }}>
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route path="/about" component={About} />
+          <Route path="/events" component={Events} />
+          <Route path="/contact" component={Contact} />
+          <Route path="/gallery" component={Gallery} />
+          <Route path="/team" component={Team} />
+          <Route path="/booking" component={Booking} />
+          <Route path="/event/:id" component={ViewEvent} />
+        </Switch>
+      </div>
       <footer className="footer">
         <div className="container">
           <div className="row">
@@ -111,7 +111,7 @@ function Homepage() {
                     <h3 className="footer-title">Address</h3>
                     <p>21, Mabo Street, Surulere Lagos, Nigeria.</p>
                     <p className="contact-address">
-                      Contact us : <a href="tel:+2348012345678">+234 (8083641967, 803474855) | +447307955509 </a> <br />
+                      Contact us : <a href="tel:+2348105974232">+234 (0) 810 597 4232 | 907 538 1066 | +44730795509, </a> <br />
                       Write us : <a href="mailto:info@xfactorproductions.ng">info@xfactorproductions.ng
                       </a>
                     </p>
@@ -124,6 +124,7 @@ function Homepage() {
                       <li><a href="http://facebook.com/platinumjsworld"><i className="tf-ion-social-facebook" aria-hidden="true"></i></a></li>
                       <li><a href="http://twitter.com/platinumjsworld"><i className="tf-ion-social-twitter" aria-hidden="true"></i></a></li>
                       <li><a href="http://www.instagram.com/platinumjsworld"><i className="tf-ion-social-instagram-outline" aria-hidden="true"></i></a></li>
+                      <li><a href="http://www.youtube.com/platinumjsworld"><i className="tf-ion-social-youtube-outline" aria-hidden="true"></i></a></li>
                     </ul>
                   </div>
                 </div>
@@ -132,7 +133,7 @@ function Homepage() {
               <div className="text-center">
                 <div className="col-md-12">
                   <div className="copyright">
-                    <p>  Copyright &copy; 2021 X Factor Productions Entertainment Company. All Rights Reserved </p>
+                    <p>  Copyright &copy; 2021 X Factor Productions Company. All Rights Reserved </p>
                   </div>
                 </div>
               </div>

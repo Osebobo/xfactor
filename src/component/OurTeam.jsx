@@ -63,7 +63,7 @@ export default function OurTeam(props) {
                     <Slider {...settings}>
                         {
                             team.map((tm, i) => <div key={i} class="team-member">
-                                <div class="th-mouse-effect m-3">
+                                <div class="th-mouse-effect m-4">
                                     <div class="team-img">
                                         <img height={400} src={tm.image} alt="Team img" />
                                     </div>

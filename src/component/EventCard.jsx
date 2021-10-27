@@ -8,7 +8,7 @@ export default function EventCard(event) {
             <div className="blog-list-section blog-content-right row">
                 <div className="col-md-9 blog-content-area">
                     <div className="blog-img">
-                        <img className="img-responsive" src={event?.image} alt="" />
+                        <img className="img-responsive" width={'100%'} src={event?.image} alt="" />
                     </div>
                     <div className="blog-content">
                         <Link to={"/event/" + event?.id}><h4 className="blog-title">{event?.title}</h4></Link>

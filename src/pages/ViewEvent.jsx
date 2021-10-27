@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router'
-import { useEvent, useEvents } from '../component/hooks'
-import ReactPlaceholder from 'react-placeholder';
-import "react-placeholder/lib/reactPlaceholder.css";
+import { useEvent, useEvents } from '../component/hooks' 
 import ReactLoading from 'react-loading';
 import Moment from 'react-moment';
 import ReactHtmlParser from 'react-html-parser';
@@ -45,20 +43,21 @@ export default function ViewEvent(props) {
                                     <div className="blog-single-content">
                                         <div className="blog-content-description">
                                             <h3><a className="blog-content-title" href="#">{eventData?.title?.rendered}</a></h3>
+                                            <div class="blog-content-description">
+                                                {eventData?.acf?.event_date?.length > 2 && <h4 class="blog-inner-heading">Event Countdown:  <span color="#facd8a"><Moment durationFromNow date={eventData?.date} /></span>  </h4>}
+                                                <p className="blog-description" style={{ fontSize: '16px' }}>{ReactHtmlParser(eventData?.content?.rendered)}</p>
+                                            </div>
                                             <div className="meta">
                                                 <div className="date">
                                                     <p><Moment  date={eventData?.date} format="LL" /></p>
                                                 </div>
-                                                {eventData?.acf?.guest?.length > 2 && <div className="author">
+                                                {/* {eventData?.acf?.guest?.length > 2 && <div className="author">
                                                     <p>Feat: {eventData?.guest}</p>
-                                                </div>}
+                                                </div>} */}
                                             </div>
 
                                         </div>
-                                        <div class="blog-content-description">
-                                            {eventData?.acf?.event_date?.length > 2 && <h4 class="blog-inner-heading">Event Countdown:  <span color="#facd8a"><Moment durationFromNow date={eventData?.date} /></span>  </h4>}
-                                            <p className="blog-description">{ReactHtmlParser(eventData?.content?.rendered)}</p>
-                                        </div>
+                                       
                                     </div>
                                     <div className="col-md-12">
                                         <div className="see-all-post text-center">
@@ -74,7 +73,7 @@ export default function ViewEvent(props) {
                                 <div className="related-post widgets">
                                     <div className="list-group">
                                         <div className="list-group-item active text-center">
-                                            Events
+                                            Previous Event
 				                    </div>
                                         {
                                             events?.map((event, key) => <Link to={"/event/" + event?.id} className="list-group-item">
