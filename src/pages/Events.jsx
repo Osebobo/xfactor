@@ -38,7 +38,7 @@ export default function Events({ history}) {
                 <div className="container">
                     <div className="row">
                         <div className="col-md-12">
-                            <h1 className="text-center" style={{ color: '#fff' }}>  Our Events </h1>
+                            <h1 className="text-center" style={{ color: '#fff' }}> Updates </h1>
                         </div>
                     </div>
                 </div>
@@ -61,7 +61,7 @@ export default function Events({ history}) {
                                 <div class="related-post widgets">
                                     <div class="list-group">
                                         <div class="list-group-item active text-center">
-                                            Recent Event
+                                            Recent Updates
                                          </div>
                                         {eventList?.map((e, i) => <a href="#" class="list-group-item">
                                             <div class="media">

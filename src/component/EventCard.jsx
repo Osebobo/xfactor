@@ -16,11 +16,11 @@ export default function EventCard(event) {
                             <div className="date">
                                 <Moment format="LL" date={event?.date} />
                             </div>
-                            <div className="author">
+                            {/* <div className="author">
                                 {event?.acf?.length > 3 && <p>Guest: {event?.guest}</p>}
-                            </div>
+                            </div> */}
                         </div>
-                        <p className="blog-decisions" >{ReactHtmlParser(event?.content)}</p>
+                        <p className="blog-decisions" >{ReactHtmlParser(event?.content.substring(0, 200))} </p>
                         <Link className="btn btn-default th-btn solid-btn" to={`/event/${event?.id}`} role="button">Read More <i class="fa fa-long-arrow-right" aria-hidden="true"></i></Link>
                     </div>
                 </div>

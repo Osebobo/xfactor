@@ -1,11 +1,12 @@
 import React from 'react'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { GrUserManager } from "react-icons/gr";
-import { CgMediaLive } from "react-icons/cg";
-import { MdOutlineEventAvailable, MdEventSeat } from "react-icons/md";
-import { RiAdvertisementLine } from "react-icons/ri";
-import { SiManageiq } from "react-icons/si";
+import { FaConnectdevelop } from "react-icons/fa";
+import { FcPlanner, FcAdvertising } from "react-icons/fc";
+import { MdPermMedia } from "react-icons/md";
+import { MdManageAccounts } from "react-icons/md";
+
+
 
 import Slider from "react-slick";
 const settings = {
@@ -47,8 +48,8 @@ export default function Services() {
         <>
             <Slider {...settings}>
                 <div class="service-item text-center">
-                    <div class="services-icon">
-                        <i><MdEventSeat /></i>
+                    <div class="services-icon"> 
+                        <i><FaConnectdevelop/></i>
                     </div>
                     <h4 class="service-title">Talent development</h4>
                     <p class="service-description">
@@ -58,7 +59,7 @@ export default function Services() {
                 </div>
                 <div class="service-item text-center">
                     <div class="services-icon">
-                        <i><SiManageiq/></i>
+                        <i><MdManageAccounts/></i>
                     </div>
                     <h4 class="service-title">Artiste management</h4>
                     <p class="service-description">
@@ -67,7 +68,7 @@ export default function Services() {
                 </div>
                 <div class="service-item text-center">
                     <div class="services-icon">
-                        <i><MdOutlineEventAvailable /></i>
+                        <i><FcPlanner /></i>
                     </div>
                     <h4 class="service-title">Event planning</h4>
                     <p class="service-description">
@@ -75,7 +76,7 @@ export default function Services() {
                 </div>
                 <div class="service-item text-center">
                     <div class="services-icon">
-                        <i><RiAdvertisementLine /></i>
+                        <i><FcAdvertising /></i>
                     </div>
                     <h4 class="service-title">Advertising</h4>
                     <p class="service-description">
@@ -83,7 +84,7 @@ export default function Services() {
                 </div>
                 <div class="service-item text-center">
                     <div class="services-icon">
-                        <i><CgMediaLive /></i>
+                        <i><MdPermMedia /></i>
                     </div>
                     <h4 class="service-title">Media consultancy</h4>
                     <p class="service-description">

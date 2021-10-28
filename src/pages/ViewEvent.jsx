@@ -30,7 +30,7 @@ export default function ViewEvent(props) {
                 <div className="container">
                     <div className="row">
                         <div className="title text-center">
-                            <h2>Our Event</h2>
+                            <h2>Updates</h2>
                         </div>
                         <div className="col-md-9">
                             {isLoading ? <div className="mx-auto">

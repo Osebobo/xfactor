@@ -1127,6 +1127,7 @@ hr.hr-border {
 
 .team-member {
     position: relative;
+    border: 1px solid #000000 ;
 }
 
 .team-member img {

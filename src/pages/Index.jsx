@@ -93,7 +93,7 @@ export default function Index({ history }) {
                                         <div className="row">
                                             <div className="col-md-12 text-center" style={{ marginTop: '40vh' }}>
                                                 <h1>{banner?.title?.rendered}</h1>
-                                                {banner?.title && <Link className="btn btn-default btn-main" to="/about" role="button">Know More</Link>}
+                                                {banner?.title && <Link className="btn btn-default btn-main mt-4" to="/about" role="button">Know More</Link>}
                                             </div>
                                         </div>
                                     </div>
@@ -113,7 +113,7 @@ export default function Index({ history }) {
                         <div className="row align-content-center">
                             <div className="col-md-6 col-xs-12">
                                 <div className="content">
-                                    <h4 className="inner-title">We build Artist</h4>
+                                    <h4 className="inner-title">We Build Artistes</h4>
                                     <p className="case-description">X Factor Productions is a boutique entertainment company specializing in talent development, artistes management, event planning, advertising and media consultancy.</p>
                                     <p>
                                         Located in the city of Lagos, with our international concern represented in London, United Kingdom, our desire is to build a global brand with strategic partnerships that uplift the artistic offerings of the African continent   </p>
@@ -134,7 +134,7 @@ export default function Index({ history }) {
             </section>
             <div className="case-study-content" style={{ backgroundColor: '#e24728' }}>
                 <div className="section">
-                    <div className="container-fluid">
+                    <div className="container">
                         <Fade left>
                             <div className="row">
                                 <div className="col-md-12">
@@ -156,7 +156,7 @@ export default function Index({ history }) {
                 <div className="container-fluid padding-0">
                     <Fade bottom>
                         <div className="title text-center mb-4">
-                            <h2>Live Feeds</h2>
+                            <h2>Live Updates</h2>
                         </div>
                         {
                             eventLoading ? <ReactLoading type="bar" color={'#facd8a'} height={500} width={200} /> : <>
@@ -173,7 +173,7 @@ export default function Index({ history }) {
                                                     <div className="related-post widgets" style={{ backgroundColor: '#fff' }}>
                                                         <div className="list-group">
                                                             <div className="list-group-item active text-center" style={{ color: '#fff' }}>
-                                                                Previous Feeds And Events
+                                                                Previous Updates
 				                                                </div>
                                                             {
                                                                 eventList.map((event, key) =>
@@ -209,16 +209,16 @@ export default function Index({ history }) {
                     className="clients" data-parallax="scroll" data-image-src="images/slider/rema-1536x672.jpg">
                     <div className="container">
                         <div className="row">
-                            <div className=" col-xs-12">
+                            <div className=" col-xs-12 text-center">
                                 <div className="img-content">
-                                    <iframe width="100%" height="500" src={'https://www.youtube.com/embed/S9DLTyMuP64'} title={videoPost[0]?.title}
+                                    <iframe width="40%" height="250" src={'https://www.youtube.com/embed/S9DLTyMuP64'} title={videoPost[0]?.title}
                                         frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                 </div>
                             </div>
                             <div className="col-xs-12">
 
-                                <div className="content">
-                                    <h2 className="inner-title" style={{ fontSize: '16px', color: '#e24728' }}>{videoPost[0]?.title}</h2>
+                                <div className="content text-center">
+                                    <h2 className="inner-title" style={{ fontSize: '14px', color: '#e24728' }}>{videoPost[0]?.title}</h2>
                                     {/* <div> {ReactHtmlParser(videoPost[0]?.content)}</div> */}
 
                                     <Link className="btn btn-default btn-main" to="/gallery" role="button">See Our Videos</Link>

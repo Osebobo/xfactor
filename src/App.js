@@ -21,8 +21,8 @@ import Contact from "./pages/Contact.jsx";
 import Team from "./component/Team.jsx";
 import Gallery from "./pages/Gallery.jsx";
 import Booking from "./pages/Booking.jsx";
-import logo from "./assets/images/logo-yellow.png"
-import whitelogo from "./assets/images/logow.png"
+import logo from "./assets/images/xfactor-logo-01.png"
+// import whitelogo from "./assets/images/logow.png"
 import { useEffect } from "react"
 function Homepage() {
 
@@ -63,8 +63,8 @@ function Homepage() {
               <span className="icon-bar"></span>
             </button>
             <a className="navbar-brand logo" >
-              <img className="normal" src={logo} alt="" style={{ width: '80px' }} />
-              <img className="white" src={whitelogo} alt="" style={{ width: '80px' }} />
+              <img className="normal" src={logo} alt="" style={{ width: '160px' }} />
+              <img className="white" src={logo} alt="" style={{ width: '160px' }} />
             </a>
           </div>
           <div className="collapse navbar-collapse navbar-ex1-collapse">
@@ -121,10 +121,10 @@ function Homepage() {
                   <div className="footer-social-media">
                     <h3 className="footer-title">Keep in touch</h3>
                     <ul className="footer-media-link">
-                      <li><a href="http://facebook.com/platinumjsworld"><i className="tf-ion-social-facebook" aria-hidden="true"></i></a></li>
-                      <li><a href="http://twitter.com/platinumjsworld"><i className="tf-ion-social-twitter" aria-hidden="true"></i></a></li>
-                      <li><a href="http://www.instagram.com/platinumjsworld"><i className="tf-ion-social-instagram-outline" aria-hidden="true"></i></a></li>
-                      <li><a href="http://www.youtube.com/platinumjsworld"><i className="tf-ion-social-youtube-outline" aria-hidden="true"></i></a></li>
+                      <li><a href="https://web.facebook.com/thexfactorproductions" target="_blank"><i className="tf-ion-social-facebook" aria-hidden="true"></i></a></li>
+                      <li><a href="https://twitter.com/thexfactorprod?fbclid=IwAR3FR5dQfWP1-6U0-S3gmuTX19wz-2w3ckUFOnb4jy7YJ-a6gjqsJler5Qw" target="_blank"><i className="tf-ion-social-twitter" aria-hidden="true"></i></a></li>
+                      <li><a href="https://www.instagram.com/thexfactorproductions/?fbclid=IwAR3_CAyBdtGvyhlEJtzSDZi8nfbU6T2JiRki3VNKNETQDLLYlph89GHWIKc" target="_blank"><i className="tf-ion-social-instagram-outline" aria-hidden="true"></i></a></li>
+                      <li><a href="https://www.youtube.com/channel/UCmMylJooYnZJVztgbDxsznA" target="_blank"><i className="tf-ion-social-youtube-outline" aria-hidden="true"></i></a></li>
                     </ul>
                   </div>
                 </div>
