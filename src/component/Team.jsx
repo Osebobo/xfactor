@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useTeams } from './hooks'
+import { useTeams } from '../component/hooks'
 import image from "../assets/images/slider/slide-2.jpg"
 import ReactLoading from 'react-loading';
 import ReactHtmlParser from 'react-html-parser';
@@ -16,7 +16,8 @@ export default function Team({ history }) {
     }, []);
     useEffect(() => {
         let tm = []
-        data?.map(t => tm.push({
+        data?.map(t => tm.unshift({
+            id: t.id,
             image: t.better_featured_image?.source_url,
             position: t.acf?.role,
             except: t.excerpt?.rendered,
@@ -36,22 +37,22 @@ export default function Team({ history }) {
                     </div>
                 </div>
             </section>
-            <section className="services">
+            <section id="team-details">
                 <div className="container">
                     {
                         isLoading ? <div className="mx-auto">
                             <ReactLoading type="cylon" color='#facd8a' height={500} width={200} />
                         </div>
                             :
-                            team.map((tm, i) => <div style={{ paddingBottom: '15vh', marginBottom: '15vh', borderBottom: '1px solid #facd8a99' }} key={i} className="row">
+                            team.map((tm, i) => <div style={{ paddingBottom: '15vh', marginBottom: '15vh', borderBottom: '2px solid #facd8a' }} key={i} className="row ">
                                 <div className="col-xs-12 col-md-12 col-lg-6">
-                                    <img style={{height: '25%', width: '70%'}} src={tm.image} className="img-responsive img-rounded" alt="Team img" />
+                                    <img src={tm.image} className="img-responsive img-fluid" alt="Team img" />
                                 </div>
                                 <div className="col-xs-12 col-md-12 col-lg-6">
-                                    <div class="content text-dark">
+                                    <div class="content text-dark details">
                                         <h3>{tm.name}</h3>
-                                        <h5 style={{color: '#000'}}>Position: {tm.position}</h5>
-                                        <p style={{ color: '#000', fontSize: '16px' }}>{ReactHtmlParser(tm.all)}</p> 
+                                        <h5 >Position: <span>{tm.position}</span> </h5>
+                                        <p>{ReactHtmlParser(tm.all)}</p> 
                                     </div>
                                 </div>
                             </div>

@@ -14,7 +14,6 @@ import {
   QueryClient,
   QueryClientProvider,
 } from 'react-query'
-// import "./assets/css/style.css"
 import ViewEvent from "./pages/ViewEvent.jsx";
 import Events from "./pages/Events.jsx";
 import Contact from "./pages/Contact.jsx";
@@ -53,18 +52,18 @@ function Homepage() {
         </div>
       </div>
 
-      <nav className="navbar navbar-fixed-top navigation"  >
+      <nav id="navigation" className="navbar navbar-fixed-top navigation"  >
         <div className="container">
           <div className="navbar-header">
-            <button type="button" className="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <button  style={{ color: '#232323' }} type="button" className="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
               <span className="sr-only">Toggle navigation</span>
               <span className="icon-bar"></span>
               <span className="icon-bar"></span>
               <span className="icon-bar"></span>
             </button>
             <a className="navbar-brand logo" >
-              <img className="normal" src={logo} alt="" style={{ width: '160px' }} />
-              <img className="white" src={logo} alt="" style={{ width: '160px' }} />
+              <img className="normal" src={logo} alt="" style={{ width: '200px' }} />
+              <img className="white" src={logo} alt="" style={{ width: '200px' }} />
             </a>
           </div>
           <div className="collapse navbar-collapse navbar-ex1-collapse">

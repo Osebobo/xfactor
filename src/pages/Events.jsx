@@ -3,6 +3,7 @@ import EventCard from '../component/EventCard'
 import { useEvents } from '../component/hooks'
 import ReactLoading from 'react-loading';
 import { Helmet } from 'react-helmet';
+import image from "../assets/images/slider/slide-3.jpg"
 
 export default function Events({ history}) {
     const [eventList, setEventList] = useState([])
@@ -18,7 +19,7 @@ export default function Events({ history}) {
     }, []);
     useEffect(() => {
         let eventArray = []
-        event?.length > 0 && event.map((e, i) => eventArray.push({
+        event?.length > 0 && event.map((e, i) => eventArray.unshift({
             id: e.id,
             title: e.title?.rendered,
             content: e.content?.rendered,
@@ -34,7 +35,7 @@ export default function Events({ history}) {
         <Helmet>
                 {event?.yoast_head}
         </Helmet>
-            <section className="page-header services-header" data-parallax="scroll" data-image-src="images/slider/slide-3.jpg">
+            <section className="page-header services-header" data-parallax="scroll" style={{ backgroundImage: `url(${image})` }}>
                 <div className="container">
                     <div className="row">
                         <div className="col-md-12">
@@ -66,7 +67,7 @@ export default function Events({ history}) {
                                         {eventList?.map((e, i) => <a href="#" class="list-group-item">
                                             <div class="media">
                                                 <div class="media-left media-middle">
-                                                    <p class="post-count">{i + 1}</p>
+                                                    <p class="post-count" style={{ color: '#e24728' }}>{i + 1}</p>
                                                 </div>
                                                 <div class="media-body">
                                                     <p>{e.title}</p>

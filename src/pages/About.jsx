@@ -76,7 +76,7 @@ export default function About({ history }) {
                 </Fade>
             </section>
             <Fade bottom>
-                <section class="team" style={{ backgroundColor: '#fff' }}>
+                <section id="team">
                     <div class="container-fluid padding-0">
 
                         <div class="title text-center">

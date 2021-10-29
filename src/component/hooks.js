@@ -5,6 +5,7 @@ import {
     getEvents,
     getGalleries,
     getTeams,
+    getTeam,
     getYoutubeVideos,
     sendBooking,
     sendContact,
@@ -23,9 +24,16 @@ export const useEvent = (id) => {
     });
 };
 
-export const useTeams = (id) => {
-    return useQuery("event", async () => {
+export const useTeams = () => {
+    return useQuery("teams", async () => {
         const { data } = await getTeams();
+        return data;
+    });
+};
+
+export const useTeam = (id) => {
+    return useQuery("team", async () => {
+        const { data } = await getTeam(id);
         return data;
     });
 };

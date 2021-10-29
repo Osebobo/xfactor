@@ -7,7 +7,7 @@ import ReactHtmlParser from 'react-html-parser';
 import { Link } from 'react-router-dom';
 const settings = {
     dots: true,
-    infinite: false,
+    // infinite: false,
     speed: 500,
     slidesToShow: 3,
     slidesToScroll: 1,
@@ -44,18 +44,20 @@ export default function OurTeam(props) {
     const [team, setTeam] = useState([])
     useEffect(() => {
         let tm = []
-        props.team?.map && props.team?.map(t => tm.push({
+        props.team?.map && props.team?.map(t => tm.unshift({
+            id: t.id,
             image: t.better_featured_image?.source_url,
-            position: t.acf?.position,
+            position: t.acf?.role,
             except: t.excerpt?.rendered,
             name: t.title?.rendered,
-            all: t.content.rendered
+            all: t.content.rendered,
+            slug: t.slug,
         }))
         setTeam(tm)
     }, [props.team])
     return (
         <div className="container">
-            { props.isLoading ?
+            {props.isLoading ?
                 <div className="mx-auto">
                     <ReactLoading type="cylon" color='#facd8a' height={500} width={200} />
                 </div> :
@@ -64,33 +66,21 @@ export default function OurTeam(props) {
                         {
                             team.map((tm, i) => <div key={i} class="team-member">
                                 <div class="th-mouse-effect m-4">
-                                    <div class="team-img">
-                                        <img height={400} src={tm.image} alt="Team img" />
-                                    </div>
-                                    <div class="overlay text-center">
-                                        <div class="content">
-                                            <h4>{tm.name} </h4>
-                                            <span>Position: {tm.position}</span>
-                                            <p>{ReactHtmlParser(tm.except)}</p>
-                                        </div>
-                                        {/* <div class="social-media">
-                                            <li><a href="#"><i class="tf-ion-social-facebook" aria-hidden="true"></i></a></li>
-                                            <li><a href="#"><i class="tf-ion-social-twitter" aria-hidden="true"></i></a></li>
-                                            <li><a href="#"><i class="tf-ion-social-linkedin-outline" aria-hidden="true"></i></a></li>
-                                            <li><a href="#"><i class="tf-ion-social-google-outline" aria-hidden="true"></i></a></li>
-                                            <li><a href="#"><i class="tf-ion-social-instagram-outline" aria-hidden="true"></i></a></li>
-                                        </div> */}
+                                    <img src={tm.image} alt="Team img" />
+                                    <div class="details">
+                                    <Link to={"/team/" + tm?.id}><h3 className="blog-title">{tm.name}</h3></Link> 
+                                            <p>{tm.position}</p>
                                     </div>
                                 </div>
                             </div>
                             )
                         }
                     </Slider>
-                    <div class="col-md-12">
+                    {/* <div class="col-md-12">
                         <div class="join-team text-center">
                             <Link class="btn btn-default btn-main" to="/team" role="button">See More</Link>
                         </div>
-                    </div>
+                    </div> */}
                 </>
             }
         </div>

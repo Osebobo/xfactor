@@ -30,7 +30,7 @@ export default function ViewEvent(props) {
                 <div className="container">
                     <div className="row">
                         <div className="title text-center">
-                            <h2>Updates</h2>
+                            <h2>{eventData?.title?.rendered}</h2>
                         </div>
                         <div className="col-md-9">
                             {isLoading ? <div className="mx-auto">
@@ -42,14 +42,14 @@ export default function ViewEvent(props) {
                                     </div>
                                     <div className="blog-single-content">
                                         <div className="blog-content-description">
-                                            <h3><a className="blog-content-title" href="#">{eventData?.title?.rendered}</a></h3>
+                                            {/* <h3><a className="blog-content-title" href="#">{eventData?.title?.rendered}</a></h3> */}
                                             <div class="blog-content-description">
                                                 {eventData?.acf?.event_date?.length > 2 && <h4 class="blog-inner-heading">Event Countdown:  <span color="#facd8a"><Moment durationFromNow date={eventData?.date} /></span>  </h4>}
-                                                <p className="blog-description" style={{ fontSize: '16px' }}>{ReactHtmlParser(eventData?.content?.rendered)}</p>
+                                                <p className="blog-description" style={{ fontSize: '16px', color: "#232323" }}>{ReactHtmlParser(eventData?.content?.rendered)}</p>
                                             </div>
                                             <div className="meta">
                                                 <div className="date">
-                                                    <p><Moment  date={eventData?.date} format="LL" /></p>
+                                                    <p style={{ fontSize: '16px', color: "#e24728" }}><Moment  date={eventData?.date} format="LL" /></p>
                                                 </div>
                                                 {/* {eventData?.acf?.guest?.length > 2 && <div className="author">
                                                     <p>Feat: {eventData?.guest}</p>
@@ -78,7 +78,7 @@ export default function ViewEvent(props) {
                                         {
                                             events?.map((event, key) => <Link to={"/event/" + event?.id} className="list-group-item">
                                                 <div className="media">
-                                                    <div className="media-left media-middle"><p className="post-count">{key + 1}</p></div>
+                                                    <div className="media-left media-middle"><p className="post-count" style={{ color: '#e24728' }}>{key + 1}</p></div>
                                                     <div className="media-body">
                                                         <p>{event.title?.rendered}</p>
                                                     </div>

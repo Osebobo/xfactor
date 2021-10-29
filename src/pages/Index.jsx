@@ -56,7 +56,7 @@ export default function Index({ history }) {
     }, []);
     useEffect(() => {
         let eventArray = []
-        event?.length > 0 && event.map((e, i) => eventArray.push({
+        event?.length > 0 && event.map((e, i) => eventArray.unshift({
             id: e.id,
             title: e.title?.rendered,
             content: e.content?.rendered,
@@ -162,7 +162,7 @@ export default function Index({ history }) {
                             eventLoading ? <ReactLoading type="bar" color={'#facd8a'} height={500} width={200} /> : <>
                                 {
 
-                                    <div className="container">
+                                    <div className="container ">
                                         <div className="row">
                                             <div className="col-xs-12 col-md-12 col-lg-7">
                                                 <EventCard {...eventList[0]} />
@@ -177,7 +177,7 @@ export default function Index({ history }) {
 				                                                </div>
                                                             {
                                                                 eventList.map((event, key) =>
-                                                                    <Link to={"/event/" + event?.id} className="list-group-item" style={{ backgroundColor: '#fff' }}>
+                                                                    <Link to={"/event/" + event?.id} className="list-group-item" style={{ backgroundColor: '#ffffff' }}>
                                                                         <div className="media" style={{ borderBottom: '1px solid #e24728' }}>
                                                                             <div className="media-left media-middle"><p className="post-count" style={{ backgroundColor: '#e24728' }}>{key + 1}</p></div>
                                                                             <div className="media-body">
@@ -211,7 +211,7 @@ export default function Index({ history }) {
                         <div className="row">
                             <div className=" col-xs-12 text-center">
                                 <div className="img-content">
-                                    <iframe width="40%" height="250" src={'https://www.youtube.com/embed/S9DLTyMuP64'} title={videoPost[0]?.title}
+                                    <iframe width="60%" height="300" src={'https://www.youtube.com/embed/S9DLTyMuP64'} title={videoPost[0]?.title}
                                         frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                 </div>
                             </div>

@@ -271,12 +271,15 @@
     .navigation .container .nav li a {
         color: #e24728;
     }
+    #navigation .container .navbar-header .navbar-toggle {
+        color: #232323;
+    }
     
     .navigation {
         background: #fff none repeat scroll 0 0;
         margin-bottom: 0;
         border-bottom: 0;
-        padding: 20px 0;
+        padding: 10px 0;
         -webkit-transition: .3s all;
         transition: .3s all;
     }
@@ -1071,94 +1074,99 @@
     /**********************************************
  Team Style
 ***********************************************/
+    #team{
+        padding: 65px 0;
+        background: #fff;
+        overflow-x: hidden;
+    }
     
     .team {
-        padding: 65px 0 0;
+        padding: 65px 0;
         background: #fff;
         overflow-x: hidden;
     }
     
     .team-member {
         position: relative;
-    }
-    
-    .team-member img {
-        width: 100%;
-    }
-    /* Team Overlay Style */
-    
-    .overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        padding: 75px 23px;
-        opacity: 0;
-        background: #e247283b; 
-        -webkit-transition: 0.4s;
-        transition: 0.4s;
-    }
-    
-    .overlay:hover {
-        opacity: 1;
-    }
-    
-    .overlay:hover .social-media,
-    .overlay:hover .content {
-        -webkit-transform: translateY(0);
-        transform: translateY(0);
-    }
-    
-    .overlay .content {
-        -webkit-transition: 0.5s;
-        transition: 0.5s;
         overflow: hidden;
-        -webkit-transform: translateY(50px);
-        transform: translateY(50px);
+        margin-bottom: 30px; 
+        padding: 0 40px; 
     }
-    
-    .overlay .content h4 {
-        margin-bottom: 3px;
-        font-family: "Poppins", sans-serif;
-        text-transform: uppercase;
-        margin: 0;
-        font-weight: 500;
-        color: rgba(18, 18, 18, 0.8);
-    }
-    
-    .overlay .content span {
-        color: rgba(18, 18, 18, 0.8);
-    }
-    
-    .overlay .content p {
-        color: #fff;
-        margin: 0;
-        padding: 20px 0;
-    }
-    
-    .overlay .social-media {
-        -webkit-transition: 0.8s;
-        transition: 0.8s;
-        -webkit-transform: translateY(30px);
-        transform: translateY(30px);
-    }
-    
-    .overlay .social-media li {
-        list-style: none;
-        display: inline-block;
-        margin: 0 8px;
-    }
-    
-    .overlay .social-media li a {
+
+    .team-member img{
+        width: 100%;
+        height:300px;
+    } 
+
+    .team-member .details {
+        background: rgba(6, 12, 34, 0.521);
+        position: absolute;
+        left: 40px;
+        bottom: -30px;
+        right: 40px;
+        text-align: center;
+        padding-top: 10px;
+        transition: all 200ms cubic-bezier(0.645, 0.045, 0.355, 1);
+        overflow: hidden;
+      }
+      
+      .team-member .details h3 {
         color: #fff;
         font-size: 22px;
-    }
-    /* Join Team Button */
+        font-weight: 600;
+        margin-bottom: -20px;
+      }
+
+      .team-member .details h3:hover {
+        color: #e24728;
+      }
+      
+      .team-member .details p {
+        color: #fff;
+        font-size: 15px;
+        margin-bottom: 10px;
+        font-style: italic;
+      }
+      
+      .team-member:hover .details {
+        bottom: 0;
+      }
+      
+      #team-details {
+        padding: 60px 0;
+        background: #fff;
+      }
+
+      #team-details img {
+        width: 65%;
+        height: 45vh;
+      }
+      
+      #team-details .details h3 {
+        color: #e24728;
+        font-size: 28px;
+        font-weight: 700;
+        margin-bottom: 10px;
+      }
+
+      #team-details .details h5 {
+        color: #e24728;
+        font-size: 18px;
+        font-weight: 700;
+        margin-bottom: 10px;
+      }
+
+      #team-details .details h5 span{
+        color: #051444;
+        font-size: 16px;
+      }
+      
+      #team-details .details p {
+        color: #232323;
+        font-size: 15px;
+        margin-bottom: 10px;
+      }
     
-    .join-team {
-        padding: 65px 0;
-    }
     /* Services page style
 ====================== */
     /**********************************************
@@ -1723,7 +1731,7 @@
     .blog-title {
         margin-top: 0;
         font-family: "Poppins", sans-serif;
-        color: #afafaf;
+        color: #232323;
         -webkit-transition: 0.5s;
         transition: 0.5s;
         line-height: 30px;
@@ -1732,7 +1740,14 @@
     }
     
     .blog-title:hover {
-        color: #e24728;
+        color: #fff;
+    }
+
+    .solid-btn{
+        color: #212121;
+    }
+    .solid-btn:hover{
+        color: #fff;
     }
     
     .blog-description {
@@ -1866,7 +1881,9 @@
     }
     
     .see-all-post a:hover {
-        color: #fff;
+        color: #232323;
+        border: 1px solid#e24728;
+        padding: 4px;
     }
     
     .blog-sidbar .list-group-item.active {
@@ -1918,7 +1935,8 @@
     }
     
     .blog-single-section-img img {
-        width: 100%;
+        width: 60%;
+        height: 50vh;
     }
     /* Blog Single Content Section
 ============================== */

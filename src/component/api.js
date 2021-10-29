@@ -33,6 +33,16 @@ export const getTeams = () => {
     })
 }
 
+export const getTeam = (id) => {
+    return new Promise((res, rej) => {
+        axios.get(`${BASE_URL}/wp-json/wp/v2/team/${id}`).then(response => {
+            return res(response);
+        }).catch(err => {
+            return rej("An error occurred")
+        })
+    })
+}
+
 export const getGalleries = () => {
     return new Promise((res, rej) => {
         axios.get(`${BASE_URL}/wp-json/wp/v2/gallery`).then(response => {
