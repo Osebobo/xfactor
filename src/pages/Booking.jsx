@@ -70,7 +70,7 @@ export default function Booking({ history }) {
 
     return (
         <>
-            <section className="page-header services-header" data-parallax="scroll" data-parallax="scroll" style={{ backgroundImage: `url(${image})` }}>
+            <section className="page-header services-header" data-parallax="scroll" style={{ backgroundImage: `url(${image})` }}>
                 <div className="container">
                     <div className="row">
                         <div className="col-md-12">
@@ -89,7 +89,7 @@ export default function Booking({ history }) {
                             {isSuccess && <p className="alert alert-success dismissible">{message}</p>}
                             {/* {validationError && <p className="alert alert-danger dismissible">{validationError}</p>} */}
                             <form onSubmit={formSubmissionHandler} className="text-center mx-auto"
-                                action="http://xfactorproductions.ng/backend/wp/wp-json/contact-form-7/v1/contact-forms/34/feedback"
+                                action="http://api.xfactorproductions.ng/wp-json/contact-form-7/v1/contact-forms/69/feedback"
                                 method="post">
                                 <div className="form-group">
                                     <input id='email-address' name='email-address' type="email" className="form-control" placeholder="Email" />

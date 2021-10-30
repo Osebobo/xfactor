@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router'
 import ReactLoading from 'react-loading';
-import { useTeam, useTeams } from '../component/hooks'
+import { useTeam } from './hooks'
 import ReactHtmlParser from 'react-html-parser';
 import image from "../assets/images/slider/slide-2.jpg"
 
+
 export default function ViewTeam(props) {
     const [teamData, setTeamData] = useState()
-    const teams = useTeams().data
-    const teamLoading = useTeams().isLoading
     const { id } = useParams()
     const { data, isError, isLoading, refetch } = useTeam(id)
     useEffect(() => {
@@ -25,7 +24,7 @@ export default function ViewTeam(props) {
     }, [id])
     return (
         <>
-            <section className="page-header services-header" data-parallax="scroll" data-parallax="scroll" style={{ backgroundImage: `url(${image})` }}>
+            <section className="page-header services-header" data-parallax="scroll" style={{ backgroundImage: `url(${image})` }}>
                 <div className="container">
                     <div className="row">
                         <div className="col-md-12">

@@ -52,14 +52,14 @@ function Homepage() {
         </div>
       </div>
 
-      <nav id="navigation" className="navbar navbar-fixed-top navigation"  >
+      <nav  className="navbar navbar-fixed-top navigation"  >
         <div className="container">
           <div className="navbar-header">
-            <button  style={{ color: '#232323' }} type="button" className="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <button type="button" className="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
               <span className="sr-only">Toggle navigation</span>
-              <span className="icon-bar"></span>
-              <span className="icon-bar"></span>
-              <span className="icon-bar"></span>
+              <span className="icon-bar" ></span>
+              <span className="icon-bar" ></span>
+              <span className="icon-bar" ></span>
             </button>
             <a className="navbar-brand logo" >
               <img className="normal" src={logo} alt="" style={{ width: '200px' }} />

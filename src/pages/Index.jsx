@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import OurTeam from '../component/OurTeam'
 import Services from '../component/Services'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";

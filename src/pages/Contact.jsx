@@ -80,27 +80,27 @@ export default function Contact({ history }) {
             <section className="contact-form">
                 <div className="container">
 
-                    <form onSubmit={formSubmissionHandler} className="text-center mx-auto"
-                        action="http://xfactorproductions.ng/backend/wp-json/contact-form-7/v1/contact-forms/33/feedback"
-                        method="post" className="row">
+                    <form onSubmit={formSubmissionHandler} className="text-center mx-auto row"
+                        action="http://api.xfactorproductions.ng/wp-json/contact-form-7/v1/contact-forms/70/feedback"
+                        method="post">
                         {isSuccess && <p className="alert alert-success dismissible">{message}</p>}
                         <>
                             <div className="col-md-6">
 
                                 <div className="form-group">
-                                    <input name="subject" type="text" className="form-control" placeholder="Subject" />
+                                    <input id="subject" name="subject" type="text" className="form-control" placeholder="Subject" />
                                 </div>
                                 <div className="form-group">
-                                    <input name="email" type="email" className="form-control" placeholder="Email" />
+                                    <input id="email" name="email" type="email" className="form-control" placeholder="Email" />
                                 </div>
                                 <div className="form-group margin-0">
-                                    <input name='full-name' type="text" className="form-control"  placeholder="Name" />
+                                    <input id="full-name" name='full-name' type="text" className="form-control"  placeholder="Name" />
                                 </div>
                                 <div className="form-group">
-                                    <textarea name="your-message" className="form-control " rows="3" placeholder="Message"></textarea>
+                                    <textarea id="your-message" name="your-message" className="form-control " rows="3" placeholder="Message"></textarea>
                                 </div>
                                 <div className="contact-btn text-center">
-                                    <button className="btn btn-/default btn-main" type="submit" >{isLoading ? 'Sending...' : 'Sent Message'}</button>
+                                    <button className="btn btn-/default btn-main" type="submit" >{isLoading ? 'Sending...' : 'Send Message'}</button>
                                 </div>
                             </div>
                             <div className="col-md-6 margin-4">

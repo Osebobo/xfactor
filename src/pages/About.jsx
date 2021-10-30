@@ -4,6 +4,7 @@ import OurTeam from '../component/OurTeam'
 import Services from '../component/Services'
 import Fade from 'react-reveal/Fade';
 import image from "../assets/images/slider/slide-2.jpg"
+
 export default function About({ history }) {
     useEffect(() => {
         const unlisten = history.listen(() => {

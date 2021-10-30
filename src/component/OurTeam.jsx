@@ -3,7 +3,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import ReactLoading from 'react-loading';
-import ReactHtmlParser from 'react-html-parser';
+import { useTeams } from '../component/hooks'
 import { Link } from 'react-router-dom';
 const settings = {
     dots: true,
@@ -24,6 +24,14 @@ const settings = {
             }
         },
         {
+            breakpoint: 991,
+            settings: {
+                slidesToShow: 2,
+                slidesToScroll: 2,
+                initialSlide: 2
+            }
+        },
+        {
             breakpoint: 600,
             settings: {
                 slidesToShow: 1,
@@ -40,11 +48,13 @@ const settings = {
         }
     ]
 };
-export default function OurTeam(props) {
-    const [team, setTeam] = useState([])
+export default function OurTeam() {
+    const [teamList, setTeamList] = useState([])
+    const team = useTeams().data
+    const teamLoading = useTeams().isLoading
     useEffect(() => {
-        let tm = []
-        props.team?.map && props.team?.map(t => tm.unshift({
+        let teamArray = []
+        team?.length > 0 && team?.map((t,i) => teamArray.unshift({
             id: t.id,
             image: t.better_featured_image?.source_url,
             position: t.acf?.role,
@@ -53,23 +63,23 @@ export default function OurTeam(props) {
             all: t.content.rendered,
             slug: t.slug,
         }))
-        setTeam(tm)
-    }, [props.team])
+        setTeamList(teamArray)
+    }, [team])
     return (
         <div className="container">
-            {props.isLoading ?
+            {teamLoading ?
                 <div className="mx-auto">
                     <ReactLoading type="cylon" color='#facd8a' height={500} width={200} />
                 </div> :
                 <>
                     <Slider {...settings}>
                         {
-                            team.map((tm, i) => <div key={i} class="team-member">
+                            teamList.map((team, i) => <div key={i} class="team-member">
                                 <div class="th-mouse-effect m-4">
-                                    <img src={tm.image} alt="Team img" />
+                                    <img src={team.image} alt="Team img" />
                                     <div class="details">
-                                    <Link to={"/team/" + tm?.id}><h3 className="blog-title">{tm.name}</h3></Link> 
-                                            <p>{tm.position}</p>
+                                    <Link to={"/team/" + team?.id}><h3 className="blog-title">{team.name}</h3></Link> 
+                                            <p>{team.position}</p>
                                     </div>
                                 </div>
                             </div>

@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import { useTeams } from '../component/hooks'
+import { useTeams } from './hooks'
 import image from "../assets/images/slider/slide-2.jpg"
 import ReactLoading from 'react-loading';
 import ReactHtmlParser from 'react-html-parser';
+
+
 export default function Team({ history }) {
     const { data, isLoading, isError } = useTeams()
     const [team, setTeam] = useState([])
