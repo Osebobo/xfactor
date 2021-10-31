@@ -15,7 +15,7 @@ export default function ViewTeam() {
         setIsLoading(true)
         Axios.get(`https://api.xfactorproductions.ng/wp-json/wp/v2/team/${id}`).then(res => {
             const { data } = res
-        setTm({
+            setTm({
                 id: data.id,
                 image: data.better_featured_image?.source_url,
                 position: data.acf?.role,
@@ -23,12 +23,12 @@ export default function ViewTeam() {
                 name: data.title?.rendered,
                 all: data.content?.rendered
             })
-            setIsLoading(false) 
+            setIsLoading(false)
         })
     }, [id])
     return (
         <>
-            <section className="page-header services-header" data-parallax="scroll" style={{ backgroundImage: `url(${image})` }}>
+            {/* <section className="page-header services-header" data-parallax="scroll" style={{ backgroundImage: `url(${image})` }}>
                 <div className="container">
                     <div className="row">
                         <div className="col-md-12">
@@ -36,8 +36,39 @@ export default function ViewTeam() {
                         </div>
                     </div>
                 </div>
+            </section> */}
+
+            <section id="team-details">
+                <div class="container">
+                    <div class="title text-center">
+                        <h2>{tm?.name}</h2>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img src={tm?.image} alt="" class="img-fluid" />
+                        </div>
+                        {isLoading ? <div className="mx-auto">
+                            <ReactLoading type="cylon" color='#facd8a' height={500} width={200} />
+                        </div>
+                            :
+                            <div class="col-md-6">
+                                <div class="details">
+                                    <h5 >Position: <span>{tm?.position}</span> </h5>
+                                    <p>{ReactHtmlParser(tm?.all)}</p>
+                                    <div className="see-all-post text-center">
+                                        <Link className="btn btn-default th-btn solid-btn" to="/team"> View All Teams</Link>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        }
+
+                    </div>
+                </div>
+
             </section>
-            <section className="contact-form">
+            {/* <section className="contact-form">
                 <div style={{ paddingBottom: '15vh', marginBottom: '15vh', borderBottom: '2px solid #facd8a' }} className="row ">
                     <div className="col-xs-12 col-md-12 col-lg-6">
                         <img src={tm?.image} className="img-responsive img-fluid" alt="Team img" />
@@ -45,13 +76,13 @@ export default function ViewTeam() {
                     <div className="col-xs-12 col-md-12 col-lg-6">
                         <div class="text-dark content text-dark details">
                             <h3>{tm?.name}</h3>
-                            <h5 style={{color: '#000'}} >Position: <span>{tm?.position}</span> </h5>
-                            <p style={{color: '#000'}}>{ReactHtmlParser(tm?.all)}</p>
+                            <h5 style={{ color: '#000' }} >Position: <span>{tm?.position}</span> </h5>
+                            <p style={{ color: '#000' }}>{ReactHtmlParser(tm?.all)}</p>
                             <Link to={`/team/${tm?.id}`}>View</Link>
                         </div>
                     </div>
                 </div>
-            </section>
+            </section> */}
         </>
 
     )
