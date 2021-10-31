@@ -78,7 +78,7 @@ export default function OurTeam() {
                                 <div class="th-mouse-effect m-4">
                                     <img src={team.image} alt="Team img" />
                                     <div class="details">
-                                    <Link to={"/team/" + team?.id}><h3 className="blog-title">{team.name}</h3></Link> 
+                                    <Link to={"/team/view/" + team?.id}><h3 className="blog-title">{team.name}</h3></Link> 
                                             <p>{team.position}</p>
                                     </div>
                                 </div>

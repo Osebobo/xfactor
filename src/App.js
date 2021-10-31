@@ -23,6 +23,7 @@ import Booking from "./pages/Booking.jsx";
 import logo from "./assets/images/xfactor-logo-01.png"
 // import whitelogo from "./assets/images/logow.png"
 import { useEffect } from "react"
+import ViewTeam from "./pages/ViewTeam.jsx";
 function Homepage() {
 
   return (
@@ -81,6 +82,7 @@ function Homepage() {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/about" component={About} />
+          <Route exact path="/team/view/:id" component={ViewTeam} />
           <Route path="/events" component={Events} />
           <Route path="/contact" component={Contact} />
           <Route path="/gallery" component={Gallery} />
