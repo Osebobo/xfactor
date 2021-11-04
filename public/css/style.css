@@ -1135,7 +1135,7 @@
         position: relative;
         overflow: hidden;
         margin-bottom: 30px;
-        padding: 0 40px;
+        padding: 0 50px;
     }
 
     .team-member img {
@@ -1146,9 +1146,9 @@
     .team-member .details {
         background: rgba(6, 12, 34, 0.521);
         position: absolute;
-        left: 40px;
+        left: 50px;
         bottom: -30px;
-        right: 40px;
+        right: 50px;
         text-align: center;
         padding-top: 10px;
         transition: all 200ms cubic-bezier(0.645, 0.045, 0.355, 1);
@@ -1191,6 +1191,11 @@
             margin-top: 10px;
             font-size: 14px;
         }
+
+        #team-details img {
+            width: 40%;
+            height: 30vh;
+        }
     }
 
     #team-details {
@@ -1199,8 +1204,8 @@
     }
 
     #team-details img {
-        width: 65%;
-        height: 45vh;
+        width: 50%;
+        height: 40vh;
     }
 
     #team-details .details h3 {
@@ -1971,7 +1976,7 @@
     .blog-sidbar .list-group-item {
         background: #e24728;
         border: 0;
-        border-bottom: 1px solid #292929;
+        /* border-bottom: 1px solid #292929; */
         color: #fff;
         margin-top: 1px;
         padding: 20px 10px;

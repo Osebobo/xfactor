@@ -164,7 +164,7 @@ export default function Index({ history }) {
                                     <div className="container ">
                                         <div className="row">
                                             <div className="col-xs-12 col-md-12 col-lg-7">
-                                                <EventCard {...eventList[0]} />
+                                                <EventCard {...eventList[eventList.length - 1]} />
                                             </div>
                                             <div className="col-lg-1"></div>
                                             <div className="col-xs-12 col-md-12 col-lg-4">

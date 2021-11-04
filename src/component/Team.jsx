@@ -49,10 +49,10 @@ export default function Team({ history }) {
                             :
                             team.map((tm, i) =>
                                 <div style={{ paddingBottom: '15vh', marginBottom: '15vh', borderBottom: '2px solid #facd8a' }} key={i} className="row ">
-                                    <div className="col-xs-12 col-md-12 col-lg-6">
+                                    <div className="col-xs-12 col-md-6 col-lg-6">
                                         <img src={tm.image} className="img-responsive img-fluid" alt="Team img" />
                                     </div>
-                                    <div className="col-xs-12 col-md-12 col-lg-6">
+                                    <div className="col-xs-12 col-md-6 col-lg-6">
                                         <div class="content text-dark details">
                                             <h3>{tm.name}</h3>
                                             <h5 >Position: <span>{tm.position}</span> </h5>
