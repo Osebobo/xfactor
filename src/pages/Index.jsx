@@ -69,8 +69,10 @@ export default function Index({ history }) {
     return (
         <>
             <Helmet>
-                <meta charSet="utf-8" />
-                <title>X Factor Productions</title>
+                <meta charset="UTF-8" />
+                <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+                <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+                <title>X Factor Productions Ltd</title>
                 <link rel="canonical" href="http://xfactorproductions.ng/" />
             </Helmet>
             <header style={{ backgroundColor: '#ffff' }}>
@@ -203,33 +205,7 @@ export default function Index({ history }) {
                 </div>
             </section>
             }
-            {videoPost.length &&
-                <section style={{ backgroundColor: '#fff' }}
-                    className="clients" data-parallax="scroll" data-image-src="images/slider/rema-1536x672.jpg">
-                    <div className="container">
-                        <div className="row">
-                            <div className=" col-xs-12 text-center">
-                                <div className="img-content">
-                                    <iframe width="60%" height="300" src={'https://www.youtube.com/embed/S9DLTyMuP64'} title={videoPost[0]?.title}
-                                        frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                </div>
-                            </div>
-                            <div className="col-xs-12">
-
-                                <div className="content text-center">
-                                    <h2 className="inner-title" style={{ fontSize: '14px', color: '#e24728' }}>{videoPost[0]?.title}</h2>
-                                    {/* <div> {ReactHtmlParser(videoPost[0]?.content)}</div> */}
-
-                                    <Link className="btn btn-default btn-main" to="/gallery" role="button">See Our Videos</Link>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </section>
-            }
-
-
+            
         </>
     )
 }

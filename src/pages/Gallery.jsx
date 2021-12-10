@@ -5,6 +5,7 @@ import image from "../assets/images/slider/slide-2.jpg"
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
+import { Helmet } from 'react-helmet';
 const settings = {
     dots: true,
     infinite: true,
@@ -65,6 +66,14 @@ export default function Gallery({ history }) {
 
     return (
         <>
+
+            <Helmet>
+                <meta charset="UTF-8" />
+                <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+                <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+                <title>Gallery - X Factor Productions Ltd</title>
+                <link rel="canonical" href="http://xfactorproductions.ng/gallery" />
+            </Helmet>
 
             <section className="page-header services-header" data-parallax="scroll" data-parallax="scroll" style={{ backgroundImage: `url(${image})` }}>
                 <div className="container">

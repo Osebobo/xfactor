@@ -112,8 +112,8 @@ function Homepage() {
                     <h3 className="footer-title">Address</h3>
                     <p>21, Mabo Street, Surulere Lagos, Nigeria.</p>
                     <p className="contact-address">
-                      Contact us : <a href="tel:+2348105974232">+234 (0) 810 597 4232 | 907 538 1066 | +44730795509, </a> <br />
-                      Write us : <a href="mailto:info@xfactorproductions.ng">info@xfactorproductions.ng
+                      Contact : <a href="tel:+2348105974232">+234 (0) 810 597 4232 | 907 538 1066 | +44730795509, </a> <br />
+                      Email : <a href="mailto:info@xfactorproductions.ng">info@xfactorproductions.ng
                       </a>
                     </p>
                   </div>

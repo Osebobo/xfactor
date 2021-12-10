@@ -32,9 +32,13 @@ export default function Events({ history}) {
     }, [event])
     return (
         <>
-        <Helmet>
-                {event?.yoast_head}
-        </Helmet>
+            <Helmet>
+                <meta charset="UTF-8" />
+                <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+                <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+                <title>Events - X Factor Productions Ltd</title>
+                <link rel="canonical" href="http://xfactorproductions.ng/events" />
+            </Helmet>
             <section className="page-header services-header" data-parallax="scroll" style={{ backgroundImage: `url(${image})` }}>
                 <div className="container">
                     <div className="row">

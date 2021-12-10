@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useSendContact } from '../component/hooks'
 import image from "../assets/images/slider/slide-2.jpg"
+import { Helmet } from "react-helmet";
 export default function Contact({ history }) {
     const [isLoading, setIsLoading] = useState(false)
     const [isSuccess, setisSuccess] = useState(false)
@@ -68,6 +69,13 @@ export default function Contact({ history }) {
     };
     return (
         <>
+            <Helmet>
+                <meta charset="UTF-8" />
+                <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+                <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+                <title>Contact - X Factor Productions Ltd</title>
+                <link rel="canonical" href="http://xfactorproductions.ng/contact" />
+            </Helmet>
             <section className="page-header services-header" data-parallax="scroll" data-parallax="scroll" style={{ backgroundImage: `url(${image})` }}>
                 <div className="container">
                     <div className="row">

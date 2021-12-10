@@ -7,13 +7,16 @@ import { useParams, Link } from 'react-router-dom'
 import image from "../assets/images/slider/slide-2.jpg"
 import ReactLoading from 'react-loading';
 import ReactHtmlParser from 'react-html-parser';
+import { Helmet } from 'react-helmet';
+
+
 export default function ViewTeam() {
     const [tm, setTm] = useState()
     const [isLoading, setIsLoading] = useState(false)
     const { id } = useParams()
     useEffect(() => {
         setIsLoading(true)
-        Axios.get(`https://api.xfactorproductions.ng/wp-json/wp/v2/team/${id}`).then(res => {
+        Axios.get(`https://api.xfactorproductions.ng/wp-json/wp/v2/team/${id}` ).then(res => {
             const { data } = res
             setTm({
                 id: data.id,
@@ -21,13 +24,21 @@ export default function ViewTeam() {
                 position: data.acf?.role,
                 except: data.excerpt?.rendered,
                 name: data.title?.rendered,
-                all: data.content?.rendered
+                all: data.content?.rendered,
+                slug: data.slug,
+                yoast_head: data.yoast_head,
             })
             setIsLoading(false)
         })
     }, [id])
     return (
         <>
+
+            <Helmet>
+                <title>{tm?.yoast_head_json?.title}</title>
+                <meta name="description" content = {tm?.yoast_head_json?.description} />
+                {tm?.yoast_head}
+            </Helmet>
             {/* <section className="page-header services-header" data-parallax="scroll" style={{ backgroundImage: `url(${image})` }}>
                 <div className="container">
                     <div className="row">

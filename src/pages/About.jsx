@@ -4,6 +4,7 @@ import OurTeam from '../component/OurTeam'
 import Services from '../component/Services'
 import Fade from 'react-reveal/Fade';
 import image from "../assets/images/slider/slide-2.jpg"
+import { Helmet } from "react-helmet";
 
 export default function About({ history }) {
     useEffect(() => {
@@ -17,6 +18,13 @@ export default function About({ history }) {
     const { data, isLoading, isError } = useTeams()
     return (
         <>
+            <Helmet>
+                <meta charset="UTF-8" />
+                <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+                <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+                <title>About - X Factor Productions Ltd</title>
+                <link rel="canonical" href="http://xfactorproductions.ng/about" />
+            </Helmet>
             <section className="page-header services-header" data-parallax="scroll" style={{ backgroundImage: `url(${image})` }}>
                 <div className="container">
                     <div className="row">

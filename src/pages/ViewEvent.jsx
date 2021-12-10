@@ -5,6 +5,7 @@ import ReactLoading from 'react-loading';
 import Moment from 'react-moment';
 import ReactHtmlParser from 'react-html-parser';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 export default function ViewEvent(props) {
     const [eventData, setEventData] = useState()
@@ -39,6 +40,11 @@ export default function ViewEvent(props) {
     }, [id])
     return (
         <>
+            <Helmet>
+                <title>{eventData?.yoast_head_json?.title}</title>
+                <meta name="description" content = {eventData?.yoast_head_json?.description} />
+                {eventData?.yoast_head}
+            </Helmet>
             <section className="blog-single">
                 <div className="container">
                     <div className="row">
@@ -62,14 +68,14 @@ export default function ViewEvent(props) {
                                                 {/* <Link classsName="btn btn-default btn-main" to={eventData?.acf?.link} role="button"> Register Here</Link> */}
                                             </div>
                                             
-                                            <div className="meta">
+                                            {/* <div className="meta">
                                                 <div className="date">
                                                     <p style={{ fontSize: '16px', color: "#e24728" }}><Moment date={eventData?.date} format="LL" /></p>
                                                 </div>
                                                 {eventData?.acf?.guest?.length > 2 && <div className="author">
                                                     <p>{eventData?.guest}</p>
                                                 </div>}
-                                            </div>
+                                            </div> */}
 
                                         </div>
 
@@ -89,7 +95,7 @@ export default function ViewEvent(props) {
                                     <div className="list-group">
                                         <div className="list-group-item active text-center">
                                             Previous Event
-                                        </div>
+                                        </div> 
                                         {
                                             eventList?.map((event, key) => <Link to={"/event/" + event?.id} className="list-group-item">
                                                 <div className="media">
