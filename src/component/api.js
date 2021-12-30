@@ -89,9 +89,11 @@ export const sendBooking = (data) => {
     })
 }
 
+// https://www.googleapis.com/youtube/v3/search?key=AIzaSyAWa6OqGAF6FfREjPCaeijNTQxQWsoLecA&channelId=UCmMylJooYnZJVztgbDxsznA&part=snippet,id&order=date&maxResults=10
+
 export const getYoutubeVideos = (data) => {
     return new Promise((res, rej) => {
-        axios.get("https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=UCmMylJooYnZJVztgbDxsznA&key=AIzaSyAWa6OqGAF6FfREjPCaeijNTQxQWsoLecA")
+        axios.get("https://www.googleapis.com/youtube/v3/search?key=AIzaSyAWa6OqGAF6FfREjPCaeijNTQxQWsoLecA&channelId=UCmMylJooYnZJVztgbDxsznA&part=snippet,id&order=date")
             .then(response => {
                 return res(response);
             }).catch(err => {

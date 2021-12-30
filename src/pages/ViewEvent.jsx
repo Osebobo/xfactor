@@ -1,3 +1,4 @@
+import Axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router'
 import { useEvent, useEvents } from '../component/hooks'
@@ -8,11 +9,12 @@ import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 
 export default function ViewEvent(props) {
-    const [eventData, setEventData] = useState()
+
+    // const [eventData, setEventData] = useState()
     const [eventList, setEventList] = useState([])
     const event = useEvents().data
-    const { id } = useParams()
-    const { data, isError, isLoading, refetch } = useEvent(id)
+    // const { id } = useParams()
+    // const { data, isError, isLoading, refetch } = useEvent(id)
     useEffect(() => {
         const unlisten = props.history.listen(() => {
             window.scrollTo(0, 0);
@@ -21,6 +23,10 @@ export default function ViewEvent(props) {
             unlisten();
         }
     }, []);
+    const [tm, setTm] = useState()
+    const [isLoading, setIsLoading] = useState(false)
+    const { slug } = useParams()
+
     useEffect(() => {
         let eventArray = []
         event?.length > 0 && event.map((e, i) => eventArray.unshift({
@@ -35,21 +41,35 @@ export default function ViewEvent(props) {
         setEventList(eventArray)
     }, [event]);
     useEffect(() => {
-        setEventData([])
-        refetch().then((res) => setEventData(res.data))
-    }, [id])
+        setIsLoading(true)
+        Axios.get(`https://api.xfactorproductions.ng/wp-json/wp/v2/event/?slug=${slug}` ).then(res => {
+            const { data } = res
+            console.log(data)
+            setTm({
+                id: data[0].id,
+                image: data[0].better_featured_image?.source_url,
+                position: data[0].acf?.role,
+                except: data[0].excerpt?.rendered,
+                name: data[0].title?.rendered,
+                all: data[0].content?.rendered,
+                slug: data[0].slug,
+                yoast_head: data[0].yoast_head,
+            })
+            setIsLoading(false)
+        })
+    }, [slug])
     return (
         <>
             <Helmet>
-                <title>{eventData?.yoast_head_json?.title}</title>
-                <meta name="description" content = {eventData?.yoast_head_json?.description} />
-                {eventData?.yoast_head}
+                <title>{tm?.yoast_head_json?.title}</title>
+                <meta name="description" content = {tm?.yoast_head_json?.description} />
+                {tm?.yoast_head}
             </Helmet>
             <section className="blog-single">
                 <div className="container">
                     <div className="row">
                         <div className="title text-center">
-                            <h2>{eventData?.title?.rendered}</h2>
+                            <h2>{tm?.name}</h2>
                         </div>
                         <div className="col-md-8">
                             {isLoading ? <div className="mx-auto">
@@ -57,14 +77,14 @@ export default function ViewEvent(props) {
                             </div> :
                                 <>
                                     <div className="blog-single-section-img">
-                                        <img src={eventData?.better_featured_image?.source_url} alt="Blog Single Img" />
+                                        <img src={tm?.image} alt="Blog Single Img" />
                                     </div>
                                     <div className="blog-single-content">
                                         <div className="blog-content-description">
                                             {/* <h3><a className="blog-content-title" href="#">{eventData?.title?.rendered}</a></h3> */}
                                             <div class="blog-content-description">
-                                                {eventData?.acf?.event_date?.length > 2 && <h4 class="blog-inner-heading">Event Countdown:  <span color="#facd8a"><Moment durationFromNow date={eventData?.date} /></span>  </h4>}
-                                                <p className="blog-description" style={{ fontSize: '16px', color: "#232323" }}>{ReactHtmlParser(eventData?.content?.rendered)}</p>
+                                                {/* {tm?.acf?.event_date?.length > 2 && <h4 class="blog-inner-heading">Event Countdown:  <span color="#facd8a"><Moment durationFromNow date={tm?.date} /></span>  </h4>} */}
+                                                <p className="blog-description" style={{ fontSize: '16px', color: "#232323" }}>{ReactHtmlParser(tm?.all)}</p>
                                                 {/* <Link classsName="btn btn-default btn-main" to={eventData?.acf?.link} role="button"> Register Here</Link> */}
                                             </div>
                                             
@@ -97,7 +117,7 @@ export default function ViewEvent(props) {
                                             Previous Event
                                         </div> 
                                         {
-                                            eventList?.map((event, key) => <Link to={"/event/" + event?.id} className="list-group-item">
+                                            eventList?.map((event, key) => <Link to={"/event/" + event?.slug} className="list-group-item">
                                                 <div className="media">
                                                     <div className="media-left media-middle"><p className="post-count" style={{ color: '#e24728' }}>{key + 1}</p></div>
                                                     <div className="media-body">

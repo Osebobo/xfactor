@@ -11,7 +11,7 @@ export default function EventCard(event) {
                         <img className="img-responsive" width={'100%'} src={event?.image} alt="" />
                     </div>
                     <div className="blog-content">
-                        <Link to={"/event/" + event?.id}><h4 className="blog-title">{event?.title}</h4></Link>
+                        <Link to={"/event/" + event?.slug}><h4 className="blog-title">{event?.title}</h4></Link>
                         {/* <div className="meta">
                             <div className="date">
                                 <Moment format="LL" date={event?.date} />
@@ -21,7 +21,7 @@ export default function EventCard(event) {
                             </div>
                         </div> */}
                         <p className="blog-decisions" >{ReactHtmlParser(event?.content.substring(0, 200))} </p>
-                        <Link className="btn btn-default th-btn solid-btn" to={`/event/${event?.id}`} role="button">Read More <i class="fa fa-long-arrow-right" aria-hidden="true"></i></Link>
+                        <Link className="btn btn-default th-btn solid-btn" to={`/event/${event?.slug}`} role="button">Read More <i class="fa fa-long-arrow-right" aria-hidden="true"></i></Link>
                     </div>
                 </div>
             </div>

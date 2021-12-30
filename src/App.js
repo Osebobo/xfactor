@@ -82,13 +82,13 @@ function Homepage() {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/about" component={About} />
-          <Route exact path="/team/view/:id" component={ViewTeam} />
+          <Route exact path="/team/view/:slug" component={ViewTeam} />
           <Route path="/events" component={Events} />
           <Route path="/contact" component={Contact} />
           <Route path="/gallery" component={Gallery} />
           <Route path="/team" component={Team} />
           <Route path="/booking" component={Booking} />
-          <Route path="/event/:id" component={ViewEvent} />
+          <Route path="/event/:slug" component={ViewEvent} />
         </Switch>
       </div>
       <footer className="footer">

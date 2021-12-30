@@ -15,6 +15,10 @@ import abountimage from "../assets/images/Street Dancer Image.jpeg"
 import ContentLoader from "react-content-loader"
 import axios from 'axios';
 import ReactHtmlParser from 'react-html-parser';
+import image from "../assets/images/slider/drum.jpg"
+import image1 from "../assets/images/slider/drum-2.jpg"
+import image2 from "../assets/images/slider/drum-4.jpg"
+
 
 const settings = {
     dots: true,
@@ -76,33 +80,45 @@ export default function Index({ history }) {
                 <link rel="canonical" href="http://xfactorproductions.ng/" />
             </Helmet>
             <header style={{ backgroundColor: '#ffff' }}>
-                {bannersLoading ? <> <ContentLoader
-                    speed={2}
-                    width={"100vw"}
-                    height={"100vh"}
-                    viewBox="0 0 400 460"
-                    backgroundColor="#f3f3f3"
-                    foregroundColor="#ecebeb"
-                >
-                    <rect x="0" y="100" rx="2" ry="2" width="100vh" height="100vh" />
-                </ContentLoader> </> :
-                    <>
+                  
                         <Slider {...settings}>
-                            {
-                                banners?.map((banner, index) => <div key={index} className="hero-area th-fullpage" data-parallax="scroll" >
-                                    <div className="container-fluid" style={{ height: '100vh', alignItems: 'center', alignContent: 'center', backgroundImage: `url(${banner?.better_featured_image?.source_url})` }}>
+                           
+                                <div className="hero-area th-fullpage" data-parallax="scroll" >
+                                    <div className="container-fluid" style={{ height: '100vh', alignItems: 'center', alignContent: 'center', backgroundImage: `url(${image})` }}>
                                         <div className="row">
                                             <div className="col-md-12 text-center" style={{ marginTop: '40vh' }}>
-                                                <h1>{banner?.title?.rendered}</h1>
-                                                {banner?.title && <Link className="btn btn-default btn-main mt-4" to="/about" role="button">Know More</Link>}
+                                                <h1>Uplifting the Artistic Offerings of the African Continent</h1>
+                                                <Link className="btn btn-default btn-main mt-4" to="/about" role="button">Know More</Link>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                )
-                            }
 
-                        </Slider> </>}
+                                <div className="hero-area th-fullpage" data-parallax="scroll" >
+                                    <div className="container-fluid" style={{ height: '100vh', alignItems: 'center', alignContent: 'center', backgroundImage: `url(${image1})` }}>
+                                        <div className="row">
+                                            <div className="col-md-12 text-center" style={{ marginTop: '40vh' }}>
+                                                <h1>Uplifting the Artistic Offerings of the African Continent</h1>
+                                                <Link className="btn btn-default btn-main mt-4" to="/about" role="button">Know More</Link>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="hero-area th-fullpage" data-parallax="scroll" >
+                                    <div className="container-fluid" style={{ height: '100vh', alignItems: 'center', alignContent: 'center', backgroundImage: `url(${image2})` }}>
+                                        <div className="row">
+                                            <div className="col-md-12 text-center" style={{ marginTop: '40vh' }}>
+                                                <h1>Uplifting the Artistic Offerings of the African Continent</h1>
+                                                <Link className="btn btn-default btn-main mt-4" to="/about" role="button">Know More</Link>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                
+
+                        </Slider>
             </header>
 
             <section className="case-study">
@@ -178,7 +194,7 @@ export default function Index({ history }) {
 				                                                </div>
                                                             {
                                                                 eventList.map((event, key) =>
-                                                                    <Link to={"/event/" + event?.id} className="list-group-item" style={{ backgroundColor: '#ffffff' }}>
+                                                                    <Link to={"/event/" + event?.slug} className="list-group-item" style={{ backgroundColor: '#ffffff' }}>
                                                                         <div className="media" style={{ borderBottom: '1px solid #e24728' }}>
                                                                             <div className="media-left media-middle"><p className="post-count" style={{ backgroundColor: '#e24728' }}>{key + 1}</p></div>
                                                                             <div className="media-body">

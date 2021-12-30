@@ -26,7 +26,8 @@ export default function Team({ history }) {
             position: t.acf?.role,
             except: t.excerpt?.rendered,
             name: t.title?.rendered,
-            all: t.content.rendered
+            all: t.content.rendered,
+            slug: t.slug,
         }))
         setTeam(tm)
         
@@ -68,7 +69,7 @@ export default function Team({ history }) {
                                             <h5 >Position: <span>{tm.position}</span> </h5>
                                             <p>{ReactHtmlParser(tm.all)}</p>
                                             <div className="see-all-post text-center">
-                                                <Link className="btn btn-default th-btn solid-btn" to={"/team/view/" + tm?.id}> View </Link>
+                                                <Link className="btn btn-default th-btn solid-btn" to={"/team/view/" + tm?.slug}> View </Link>
                                             </div>
                                         </div>
                                     </div>

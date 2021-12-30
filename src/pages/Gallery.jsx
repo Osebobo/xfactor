@@ -141,6 +141,7 @@ export default function Gallery({ history }) {
 const YoutubeMedia = () => {
     const videos = useYoutubeVideos().data?.items
     const loading = useYoutubeVideos().isLoading
+    console.log(videos)
     return (
         <div className="col-md-12">
             {loading ? <div className="w-100 ml-4 mx-auto">
@@ -152,12 +153,12 @@ const YoutubeMedia = () => {
                         {
                             videos?.map((im, i) =>
                                 <div className="portfolio-list col-xs-12 col-md-4">
-                                    <a href={`https://www.youtube.com/embed/${im.id?.videoId}`}>
+                                    <a href={`https://www.youtube.com/embed/${im.id.videoId}`}>
                                         <div className="th-mouse-portfolio-card" style={{ margin: 10 }}>
                                             <div className="thumbnail portfolio-thumbnail">
-                                                <iframe width="100%" height="315" src={`https://www.youtube.com/embed/${im.id?.videoId}`} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                                <iframe width="100%" height="315" src={`https://www.youtube.com/embed/${im.id.videoId}`} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                                 <div className="caption portfolio-caption">
-                                                    <h3 className="portfolio-title">{im.snippet?.title}</h3>
+                                                    <h3 className="portfolio-title">{im.snippet.title}</h3>
                                                     {/* <p className="portfolio-subtitle">Branding</p> */}
                                                 </div>
                                             </div>

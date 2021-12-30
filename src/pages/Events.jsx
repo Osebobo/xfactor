@@ -4,6 +4,7 @@ import { useEvents } from '../component/hooks'
 import ReactLoading from 'react-loading';
 import { Helmet } from 'react-helmet';
 import image from "../assets/images/slider/slide-3.jpg"
+import { Link } from 'react-router-dom';
 
 export default function Events({ history}) {
     const [eventList, setEventList] = useState([])
@@ -68,17 +69,16 @@ export default function Events({ history}) {
                                         <div class="list-group-item active text-center">
                                             Recent Updates
                                          </div>
-                                        {eventList?.map((e, i) => <a href="#" class="list-group-item">
-                                            <div class="media">
-                                                <div class="media-left media-middle">
-                                                    <p class="post-count" style={{ color: '#e24728' }}>{i + 1}</p>
+                                         {
+                                             eventList?.map((event, key) => <Link to={"/event/" + event?.slug} className="list-group-item">
+                                                <div className="media">
+                                                    <div className="media-left media-middle"><p className="post-count" style={{ color: '#e24728' }}>{key + 1}</p></div>
+                                                    <div className="media-body">
+                                                        <p>{event.title}</p>
+                                                    </div>
                                                 </div>
-                                                <div class="media-body">
-                                                    <p>{e.title}</p>
-                                                </div>
-                                            </div>
-                                        </a>)
-                                        }
+                                            </Link>)
+                                         }
                                     </div>
                                 </div>
                             </div>

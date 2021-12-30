@@ -2199,6 +2199,28 @@
         color: #fff;
     }
 
+    .contact-form .form-group .form-option {
+        border-radius: 0;
+        padding: 20px;
+        background: transparent;
+        border-color: #e24728;
+        min-height: 70px;
+        font-size: 16px;
+        width: 100%;
+        color: #757474;
+    }
+
+    .contact-form .form-group .form-option:focus {
+        outline: none;
+        box-shadow: none;
+        border-color: #afafaf;
+    }
+
+    .contact-form .form-group label {
+        font-size: 16px;
+        color: #e24728;
+    }
+
     .contact-form .form-group textarea {
         height: 240px;
     }

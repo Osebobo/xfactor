@@ -74,7 +74,7 @@ export default function Booking({ history }) {
         <>
             <Helmet>
                 <meta charset="UTF-8" />
-                <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
                 <meta http-equiv="X-UA-Compatible" content="ie=edge" />
                 <title>Booking - X Factor Productions Ltd</title>
                 <link rel="canonical" href="http://xfactorproductions.ng/booking" />
@@ -90,11 +90,11 @@ export default function Booking({ history }) {
             </section>
             <section className="contact-form">
                 <div className="container">
-                    <div className="row"> 
+                    <div className="row">
                         <div className="title text-center col-md-6 col-xs-12">
                             <h2>How can we be of service</h2>
                         </div>
-                        <div className="col-md-6 col-xs-12 align-content-center"> 
+                        <div className="col-md-6 col-xs-12 align-content-center">
                             {isSuccess && <p className="alert alert-success dismissible">{message}</p>}
                             {/* {validationError && <p className="alert alert-danger dismissible">{validationError}</p>} */}
                             <form onSubmit={formSubmissionHandler} className="text-center mx-auto"
@@ -107,7 +107,15 @@ export default function Booking({ history }) {
                                     <input id='full-name' name='full-name' type="text" className="form-control" placeholder="Name" />
                                 </div>
                                 <div className="form-group">
-                                    <input id='subject' name='subject' type="text" className="form-control" placeholder="Subject" />
+                                    <label for="subject">Our services</label>
+                                    <select className="form-option" id='subject' name='subject'>
+                                        <option>Event Planning</option>
+                                        <option>Advertising</option>
+                                        <option>Talent Development</option>
+                                        <option>Media Consultancy</option>
+                                        <option>Artiste Management</option>
+                                        <option>Others</option>
+                                    </select>
                                 </div>
                                 <div className="form-group">
                                     <textarea id='body' name='body' className="form-control " rows="3" placeholder="Tell us what you'd what us to do"></textarea>

@@ -4,7 +4,6 @@ import React, {
     useEffect
 } from 'react'
 import { useParams, Link } from 'react-router-dom'
-import image from "../assets/images/slider/slide-2.jpg"
 import ReactLoading from 'react-loading';
 import ReactHtmlParser from 'react-html-parser';
 import { Helmet } from 'react-helmet';
@@ -13,24 +12,25 @@ import { Helmet } from 'react-helmet';
 export default function ViewTeam() {
     const [tm, setTm] = useState()
     const [isLoading, setIsLoading] = useState(false)
-    const { id } = useParams()
+    const { slug } = useParams()
     useEffect(() => {
         setIsLoading(true)
-        Axios.get(`https://api.xfactorproductions.ng/wp-json/wp/v2/team/${id}` ).then(res => {
+        Axios.get(`https://api.xfactorproductions.ng/wp-json/wp/v2/team/?slug=${slug}` ).then(res => {
             const { data } = res
+            
             setTm({
-                id: data.id,
-                image: data.better_featured_image?.source_url,
-                position: data.acf?.role,
-                except: data.excerpt?.rendered,
-                name: data.title?.rendered,
-                all: data.content?.rendered,
-                slug: data.slug,
-                yoast_head: data.yoast_head,
+                id: data[0].id,
+                image: data[0].better_featured_image?.source_url,
+                position: data[0].acf?.role,
+                except: data[0].excerpt?.rendered,
+                name: data[0].title?.rendered,
+                all: data[0].content?.rendered,
+                slug: data[0].slug,
+                yoast_head: data[0].yoast_head,
             })
             setIsLoading(false)
         })
-    }, [id])
+    }, [slug])
     return (
         <>
 
