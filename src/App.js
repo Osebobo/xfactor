@@ -62,7 +62,7 @@ function Homepage() {
               <span className="icon-bar" ></span>
               <span className="icon-bar" ></span>
             </button>
-            <a className="navbar-brand logo" >
+            <a href="/" className="navbar-brand logo" > 
               <img className="normal" src={logo} alt="" style={{ width: '200px' }} />
               <img className="white" src={logo} alt="" style={{ width: '200px' }} />
             </a>
@@ -83,12 +83,12 @@ function Homepage() {
           <Route exact path="/" component={Home} />
           <Route path="/about" component={About} />
           <Route exact path="/team/view/:slug" component={ViewTeam} />
-          <Route path="/events" component={Events} />
+          <Route path="/updates" component={Events} />
           <Route path="/contact" component={Contact} />
           <Route path="/gallery" component={Gallery} />
           <Route path="/team" component={Team} />
           <Route path="/booking" component={Booking} />
-          <Route path="/event/:slug" component={ViewEvent} />
+          <Route path="/update/:slug" component={ViewEvent} />
         </Switch>
       </div>
       <footer className="footer">
@@ -134,7 +134,7 @@ function Homepage() {
               <div className="text-center">
                 <div className="col-md-12">
                   <div className="copyright">
-                    <p>  Copyright &copy; 2021 X Factor Productions Company. All Rights Reserved </p>
+                    <p>  Copyright &copy; {(new Date().getFullYear())} X Factor Productions Company. All Rights Reserved </p>
                   </div>
                 </div>
               </div>

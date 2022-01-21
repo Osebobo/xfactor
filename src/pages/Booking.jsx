@@ -95,7 +95,7 @@ export default function Booking({ history }) {
                             <h2>How can we be of service</h2>
                         </div>
                         <div className="col-md-6 col-xs-12 align-content-center">
-                            {isSuccess && <p className="alert alert-success dismissible">{message}</p>}
+                            
                             {/* {validationError && <p className="alert alert-danger dismissible">{validationError}</p>} */}
                             <form onSubmit={formSubmissionHandler} className="text-center mx-auto"
                                 action="http://api.xfactorproductions.ng/wp-json/contact-form-7/v1/contact-forms/69/feedback"
@@ -120,11 +120,13 @@ export default function Booking({ history }) {
                                 <div className="form-group">
                                     <textarea id='body' name='body' className="form-control " rows="3" placeholder="Tell us what you'd what us to do"></textarea>
                                 </div>
+                                {isSuccess && <p className="alert alert-success dismissible">{message}</p>}
                                 <div className="col-md-12">
                                     <div className="contact-btn text-center">
                                         <button type="submit" class="btn btn-default btn-main" >{isLoading ? 'Sending...' : 'Send Message'}</button>
                                     </div>
                                 </div>
+                                
                             </form>
 
                         </div>

@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router'
 import { useEvent, useEvents } from '../component/hooks'
 import ReactLoading from 'react-loading';
-import Moment from 'react-moment';
 import ReactHtmlParser from 'react-html-parser';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
@@ -87,22 +86,13 @@ export default function ViewEvent(props) {
                                                 <p className="blog-description" style={{ fontSize: '16px', color: "#232323" }}>{ReactHtmlParser(tm?.all)}</p>
                                                 {/* <Link classsName="btn btn-default btn-main" to={eventData?.acf?.link} role="button"> Register Here</Link> */}
                                             </div>
-                                            
-                                            {/* <div className="meta">
-                                                <div className="date">
-                                                    <p style={{ fontSize: '16px', color: "#e24728" }}><Moment date={eventData?.date} format="LL" /></p>
-                                                </div>
-                                                {eventData?.acf?.guest?.length > 2 && <div className="author">
-                                                    <p>{eventData?.guest}</p>
-                                                </div>}
-                                            </div> */}
 
                                         </div>
 
                                     </div>
                                     <div className="col-md-12">
                                         <div className="see-all-post text-center">
-                                            <Link className="btn btn-default th-btn solid-btn" to="/events" role="button"> Back To All Events</Link>
+                                            <Link className="btn btn-default th-btn solid-btn" to="/updates" role="button"> Back To All Updates</Link>
                                         </div>
                                     </div>
                                 </>
@@ -114,10 +104,10 @@ export default function ViewEvent(props) {
                                 <div className="related-post widgets">
                                     <div className="list-group">
                                         <div className="list-group-item active text-center">
-                                            Previous Event
+                                            Previous Updates
                                         </div> 
                                         {
-                                            eventList?.map((event, key) => <Link to={"/event/" + event?.slug} className="list-group-item">
+                                            eventList?.map((event, key) => <Link to={"/update/" + event?.slug} className="list-group-item">
                                                 <div className="media">
                                                     <div className="media-left media-middle"><p className="post-count" style={{ color: '#e24728' }}>{key + 1}</p></div>
                                                     <div className="media-body">

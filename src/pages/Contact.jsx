@@ -91,7 +91,7 @@ export default function Contact({ history }) {
                     <form onSubmit={formSubmissionHandler} className="text-center mx-auto row"
                         action="http://api.xfactorproductions.ng/wp-json/contact-form-7/v1/contact-forms/70/feedback"
                         method="post">
-                        {isSuccess && <p className="alert alert-success dismissible">{message}</p>}
+    
                         <>
                             <div className="col-md-6">
 
@@ -101,7 +101,7 @@ export default function Contact({ history }) {
                                 <div className="form-group">
                                     <input id="email" name="email" type="email" className="form-control" placeholder="Email" />
                                 </div>
-                                <div className="form-group margin-0">
+                                <div className="form-group">
                                     <input id="full-name" name='full-name' type="text" className="form-control"  placeholder="Name" />
                                 </div>
                                 <div className="form-group">
@@ -110,6 +110,7 @@ export default function Contact({ history }) {
                                 <div className="contact-btn text-center">
                                     <button className="btn btn-/default btn-main" type="submit" >{isLoading ? 'Sending...' : 'Send Message'}</button>
                                 </div>
+                                {isSuccess && <p className="alert alert-success dismissible">{message}</p>}
                             </div>
                             <div className="col-md-6 margin-4">
                                 <div className="title text-center col-md-6 col-xs-12">

@@ -37,8 +37,8 @@ export default function Events({ history}) {
                 <meta charset="UTF-8" />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
                 <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-                <title>Events - X Factor Productions Ltd</title>
-                <link rel="canonical" href="http://xfactorproductions.ng/events" />
+                <title>Updates - X Factor Productions Ltd</title>
+                <link rel="canonical" href="http://xfactorproductions.ng/updates" />
             </Helmet>
             <section className="page-header services-header" data-parallax="scroll" style={{ backgroundImage: `url(${image})` }}>
                 <div className="container">
@@ -56,11 +56,11 @@ export default function Events({ history}) {
                             {eventLoading ? <div className="mx-auto">
                                 <ReactLoading type="cylon" color={'#facd8a'} height={500} width={200} />
                             </div> : eventList?.map((e, i) => <EventCard key={i} {...e} />)}
-                            <div class="col-md-12">
+                            {/* <div class="col-md-12">
                                 <div class="see-all-post text-center">
                                     <a class="btn btn-default th-btn solid-btn" href="#" role="button">See All Posts <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
                                 </div>
-                            </div>
+                            </div> */}
                         </div>
                         <div class="col-md-3">
                             <div class="blog-sidbar">
@@ -70,7 +70,7 @@ export default function Events({ history}) {
                                             Recent Updates
                                          </div>
                                          {
-                                             eventList?.map((event, key) => <Link to={"/event/" + event?.slug} className="list-group-item">
+                                             eventList?.map((event, key) => <Link to={"/update/" + event?.slug} className="list-group-item">
                                                 <div className="media">
                                                     <div className="media-left media-middle"><p className="post-count" style={{ color: '#e24728' }}>{key + 1}</p></div>
                                                     <div className="media-body">
